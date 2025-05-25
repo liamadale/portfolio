@@ -1,0 +1,30 @@
+@import './hero.css';
+@import './about.css';
+@import './experience.css';
+@import './projects.css';
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --color-bg: #0f172a;           /* bg-slate-900 */
+  --color-text: #e2e8f0;         /* text-slate-200 */
+  --color-muted: #94a3b8;        /* text-slate-400 */
+  --color-accent: #14b8a6;       /* text-teal-300 */
+  --color-accent-bg: rgba(45, 212, 191, 0.1); /* bg-teal-400/10 */
+  --color-heading: #64748b;      /* text-slate-500 */
+  --color-link: #e2e8f0;         /* text-slate-200 (hover) */
+  --color-highlight: #f8fafc;    /* text-white or similar */
+}
+
+/* Optional: Light Theme */
+.theme-light {
+  --color-bg: #f8fafc;          /* slate-50 */
+  --color-text: #0f172a;        /* slate-900 */
+  --color-accent: #0ea5e9;      /* sky-400 */
+  --color-muted: #64748b;       /* slate-500 */
+}
+
+body {
+  font-family: var(--font-inter);
+  @apply relative bg-slate-900 text-slate-200 antialiased overflow-x-hidden;
+}
+

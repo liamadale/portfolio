@@ -1,0 +1,53 @@
+---
+const jobs = [
+  {
+    company: "Klaviyo",
+    title: "Senior Frontend Engineer, Accessibility",
+    timeframe: "2024 — Present",
+    url: "https://www.klaviyo.com/",
+    description:
+      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
+    tech: ["JavaScript", "TypeScript", "React", "Storybook"],
+  },
+  {
+    company: "Upstatement",
+    title: "Lead Engineer",
+    timeframe: "2018 — 2024",
+    url: "https://upstatement.com/",
+    description:
+      "Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diverse array of projects. Provided leadership through close collaboration and development of internal tools.",
+    tech: ["JavaScript", "TypeScript", "React", "Next.js", "WordPress", "Contentful"],
+  },
+];
+---
+
+<section id="experience" class="experience-section">
+  <h2 class="experience-heading">Experience</h2>
+
+  <ol class="experience-list">
+    {jobs.map(job => (
+      <li>
+        <div class="job-entry">
+          <time class="job-time">
+            {job.timeframe}
+          </time>
+          <div class="job-details">
+            <h3 class="job-title">
+              <a href={job.url} target="_blank" class="job-link group">
+                {job.title} · <span class="job-company">{job.company}</span>
+              </a>
+            </h3>
+            <p class="job-description">{job.description}</p>
+            <ul class="job-tech-list">
+              {job.tech.map(t => (
+                <li>
+                  <span class="job-tech">{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
