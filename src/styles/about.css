@@ -1,0 +1,23 @@
+.about-section {
+  @apply scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24;
+}
+
+.about-heading {
+  @apply text-sm font-bold uppercase tracking-widest text-slate-500 mb-6;
+}
+
+.about-content {
+  @apply space-y-4 text-slate-400 text-sm leading-relaxed max-w-3xl;
+}
+
+.highlight {
+  @apply font-medium text-slate-200;
+}
+
+.highlight-link {
+  @apply font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300;
+}
+
+.highlight-bold {
+  @apply font-semibold text-slate-200;
+}

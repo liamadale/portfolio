@@ -1,0 +1,36 @@
+---
+// Layout.astro
+const { title = "Liam Dale", description = "I'm working towards a career in cybersecurity. Focused on SOC analyst positions. " } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Favicon and social meta (optional for now) -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png" />
+    <!-- FONTS ARE IMPORTED HERE -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GLOBAL STYLING IS IMPORTED HERE -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <script src="https://kit.fontawesome.com/f094ea114c.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <!-- Spotlight Effect Layer -->
+    <div id="spotlight" class="pointer-events-none fixed inset-0 z-0"></div>
+
+    <!-- Page Content -->
+    <div class="relative z-10">
+      <slot />
+    </div>
+
+    <script src="/src/scripts/spotlight.js" defer></script>
+  </body>
+</html>

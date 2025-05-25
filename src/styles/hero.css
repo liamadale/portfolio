@@ -1,0 +1,70 @@
+/* src/styles/hero.css */
+
+/* Container for sticky layout on desktop */
+.hero-container {
+  @apply lg:sticky lg:top-0 lg:flex lg:w-full lg:flex-col lg:justify-between px-6 md:px-12 bg-transparent text-slate-200;
+}
+
+/* Outer and inner layout control */
+.hero-inner {
+  @apply flex-1 flex items-center;
+}
+
+.hero-content {
+  @apply max-w-xl mx-0 lg:mx-auto text-left;
+}
+
+/* Typography */
+.hero-title {
+  @apply text-5xl sm:text-6xl font-extrabold tracking-tight text-white;
+}
+
+.hero-subtitle {
+  @apply mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl;
+}
+
+.hero-description {
+  @apply mt-4 max-w-xs leading-normal text-slate-400;
+}
+
+/* Navigation */
+.hero-nav {
+  @apply mt-16 hidden lg:block;
+}
+
+.hero-nav ul {
+  @apply space-y-3 text-xs font-bold uppercase tracking-widest text-slate-500;
+}
+
+.nav-link {
+  @apply flex items-center;
+}
+
+.nav-link:hover {
+  @apply text-slate-200;
+}
+
+.nav-link:focus-visible {
+  @apply text-teal-300;
+}
+
+.nav-indicator {
+  @apply mr-4 h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 motion-reduce:transition-none;
+}
+
+.nav-text {
+  @apply group-hover:text-slate-200;
+}
+
+/* Footer Social Icons */
+.hero-footer {
+  @apply mt-10;
+}
+
+.social-links {
+  @apply flex gap-6 text-slate-400;
+}
+
+.social-links a {
+  @apply hover:text-teal-300 text-2xl;
+}

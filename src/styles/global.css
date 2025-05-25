@@ -1,0 +1,8 @@
+@import './themes.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#spotlight {
+  transition: background 0.2s ease;
+}

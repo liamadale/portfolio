@@ -1,0 +1,63 @@
+---
+const projects = [
+  {
+    title: "Spotify Profile Analyzer",
+    description: "A web app that uses the Spotify API to visualize your listening habits and generate fun reports.",
+    tech: ["React", "Node.js", "Spotify API"],
+    link: "https://github.com/bchiang7/spotify-profile",
+    live: "https://spotify-profile.herokuapp.com",
+  },
+  {
+    title: "Personal Portfolio v4",
+    description: "My fourth iteration of a personal portfolio site, built to be fast, responsive, and accessible.",
+    tech: ["Next.js", "Tailwind CSS"],
+    link: "https://github.com/bchiang7/v4",
+    live: "https://brittanychiang.com",
+  },
+];
+---
+
+<section id="projects" class="projects-section">
+  <h2 class="projects-heading">Projects</h2>
+
+  <div class="projects-list">
+    {projects.map((project) => (
+      <div class="group project-entry">
+        <div class="project-details">
+          <h3>
+            <a
+              href={project.live}
+              target="_blank"
+              class="project-title"
+            >
+              <span class="project-clickable"></span>
+              <span>
+                {project.title}
+                <span class="project-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"  class="project-icon-svg group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none">
+                    <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </span>
+            </a>
+          </h3>
+
+          <p class="project-description">{project.description}</p>
+
+          <ul class="project-tech-list" aria-label="Technologies used:">
+            {project.tech.map((t) => (
+              <li>
+                <div class="project-tech">{t}</div>
+              </li>
+            ))}
+          </ul>
+
+          <div class="project-links">
+            <a href={project.live} target="_blank" class="project-link">Live</a>
+            <a href={project.link} target="_blank" class="project-link">Code</a>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
