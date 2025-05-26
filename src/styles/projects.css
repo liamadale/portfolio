@@ -1,11 +1,10 @@
-
 @layer components {
   .projects-section {
     @apply scroll-mt-16 mb-24 lg:scroll-mt-24 lg:mb-36;
   }
 
   .projects-heading {
-    @apply text-sm font-bold uppercase tracking-widest text-slate-500 mb-6;
+    @apply text-sm font-bold uppercase tracking-widest text-skin-heading mb-6;
   }
 
   .projects-list {
@@ -21,7 +20,7 @@
   }
 
   .project-title {
-    @apply inline-flex items-baseline font-medium leading-tight text-slate-200 hover:text-teal-300 focus-visible:text-teal-300 text-base;
+    @apply inline-flex items-baseline font-medium leading-tight text-skin-text hover:text-skin-accent focus-visible:text-skin-accent text-base;
   }
 
   .project-clickable {
@@ -37,7 +36,7 @@
   }
 
   .project-description {
-    @apply mt-2 text-sm leading-normal text-slate-400;
+    @apply mt-2 text-sm leading-normal text-skin-muted;
   }
 
   .project-tech-list {
@@ -45,7 +44,7 @@
   }
 
   .project-tech {
-    @apply flex items-center rounded-full bg-teal-400/10 px-3 py-1 text-xs font-medium leading-5 text-teal-300 mr-1.5 mt-2;
+    @apply flex items-center rounded-full bg-skin-accent-bg px-3 py-1 text-xs font-medium leading-5 text-skin-accent mr-1.5 mt-2;
   }
 
   .project-links {
@@ -53,11 +52,10 @@
   }
 
   .project-link {
-    @apply text-sm text-slate-400 hover:text-teal-300;
+    @apply text-sm text-skin-muted hover:text-skin-accent;
   }
 }
 
-/* Responsive variants like lg:hover must be written manually */
 @media (min-width: 1024px) {
   .project-entry:hover {
     opacity: 1 !important;

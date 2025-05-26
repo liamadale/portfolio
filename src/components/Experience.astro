@@ -1,22 +1,76 @@
 ---
 const jobs = [
   {
-    company: "Klaviyo",
-    title: "Senior Frontend Engineer, Accessibility",
-    timeframe: "2024 — Present",
-    url: "https://www.klaviyo.com/",
+    company: "Bellevue College InfoSec Club",
+    title: "President",
+    timeframe: "Sep 2024 — Present",
+    url: "https://bcinfosec.club",
     description:
-      "Build and maintain critical components used to construct Klaviyo’s frontend, across the whole product. Work closely with cross-functional teams, including developers, designers, and product managers, to implement and advocate for best practices in web accessibility.",
-    tech: ["JavaScript", "TypeScript", "React", "Storybook"],
+      "Lead weekly cybersecurity labs and workshops for students. Built and maintain a secure lab environment allowing students to access Kali Linux and vulnerable machines on and off-campus. Developed the club’s website using Hugo and the Doks theme.",
+    tech: ["Hugo", "HTML/CSS", "Linux", "Cybersecurity", "Homelab", "Ludus", "Proxmox", "Leadership", "Teaching"],
   },
   {
-    company: "Upstatement",
-    title: "Lead Engineer",
-    timeframe: "2018 — 2024",
-    url: "https://upstatement.com/",
+    company: "Dutch Bros Coffee",
+    title: "Barista",
+    timeframe: "Mar 2024 — Present",
+    url: "https://www.dutchbros.com/",
     description:
-      "Build, style, and ship high-quality websites, design systems, mobile apps, and digital experiences for a diverse array of projects. Provided leadership through close collaboration and development of internal tools.",
-    tech: ["JavaScript", "TypeScript", "React", "Next.js", "WordPress", "Contentful"],
+      "Prepared drinks, provided customer service in a fast-paced environment, and supported team operations.",
+    tech: [],
+  },
+  {
+    company: "Beans & Brews",
+    title: "Barista",
+    timeframe: "Mar 2023 — Jul 2023",
+    url: "https://beansandbrews.com/",
+    description:
+      "Served coffee and maintained store operations while developing strong communication and multitasking skills.",
+    tech: [],
+  },
+  {
+    company: "Littell House Construction LLC",
+    title: "Apprentice Carpenter",
+    timeframe: "Sep 2022 — Nov 2022",
+    url: "",
+    description:
+      "Assisted in residential construction and carpentry projects, gaining hands-on experience with tools and teamwork.",
+    tech: [],
+  },
+  {
+    company: "Target",
+    title: "Sales Associate",
+    timeframe: "Jan 2020 — Sep 2021",
+    url: "https://www.target.com/",
+    description:
+      "Worked on the sales floor, helped customers with purchases, and kept merchandise organized and stocked.",
+    tech: [],
+  },
+  {
+    company: "Microsoft Research",
+    title: "Research Intern",
+    timeframe: "Jul 2018 — Aug 2018",
+    url: "https://www.microsoft.com/en-us/research/",
+    description:
+      "Developed an Arduino-based assistive device for visually impaired users. Collected and formatted gesture data for a machine learning prototype.",
+    tech: ["Arduino", "Python", "Embedded Systems", "Machine Learning"],
+  },
+];
+const education = [
+  {
+    school: "Bellevue College",
+    degree: "Bachelor of Applied Science in Cybersecurity",
+    timeframe: "Mar 2024 — Dec 2026",
+    location: "Bellevue, WA",
+    gpa: "3.7 / 4.0",
+    relevantCourses: ["Python", "Networking Series", "Intro to AWS"],
+  },
+  {
+    school: "University of Washington — Seattle",
+    degree: "General Education",
+    timeframe: "Sep 2020 — Dec 2022",
+    location: "Seattle, WA",
+    gpa: "3.7 / 4.0",
+    relevantCourses: ["Java I", "Java II"],
   },
 ];
 ---
@@ -24,6 +78,7 @@ const jobs = [
 <section id="experience" class="experience-section">
   <h2 class="experience-heading">Experience</h2>
 
+  <h3 class="job-title">Work Experience</h3>
   <ol class="experience-list">
     {jobs.map(job => (
       <li>
@@ -33,7 +88,7 @@ const jobs = [
           </time>
           <div class="job-details">
             <h3 class="job-title">
-              <a href={job.url} target="_blank" class="job-link group">
+              <a href={job.url} target="_blank" rel="noopener noreferrer" class="job-link group">
                 {job.title} · <span class="job-company">{job.company}</span>
               </a>
             </h3>
@@ -45,6 +100,28 @@ const jobs = [
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <h2 class="experience-heading">Education</h2>
+  <ol class="experience-list">
+    {education.map(school => (
+      <li>
+        <div class="job-entry">
+          <time class="job-time">
+            {school.timeframe}
+          </time>
+          <div class="job-details">
+            <h3 class="job-title">
+              <span class="job-company">{school.degree}</span> · {school.school}
+            </h3>
+            <p class="job-description">GPA: {school.gpa}</p>
+            <p class="job-description">
+              Relevant Coursework: {school.relevantCourses.join(", ")}
+            </p>
           </div>
         </div>
       </li>

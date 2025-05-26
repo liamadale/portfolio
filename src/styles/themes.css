@@ -1,30 +1,56 @@
-@import './hero.css';
-@import './about.css';
-@import './experience.css';
-@import './projects.css';
+/* themes.css */
 
+/* Base Theme (Dark) */
 :root {
   --font-inter: 'Inter', sans-serif;
-  --color-bg: #0f172a;           /* bg-slate-900 */
-  --color-text: #e2e8f0;         /* text-slate-200 */
-  --color-muted: #94a3b8;        /* text-slate-400 */
-  --color-accent: #14b8a6;       /* text-teal-300 */
-  --color-accent-bg: rgba(45, 212, 191, 0.1); /* bg-teal-400/10 */
-  --color-heading: #64748b;      /* text-slate-500 */
-  --color-link: #e2e8f0;         /* text-slate-200 (hover) */
-  --color-highlight: #f8fafc;    /* text-white or similar */
+
+  --color-bg: #0f172a;               /* bg-skin-bg */
+  --color-text: #e2e8f0;             /* text-skin-text */
+  --color-muted: #94a3b8;            /* text-skin-muted */
+  --color-accent: #14b8a6;           /* text-skin-accent */
+  --color-accent-bg: rgba(45, 212, 191, 0.1); /* bg-skin-accent-bg */
+  --color-heading: #64748b;          /* text-skin-heading */
+  --color-link: #7dd3fc;             /* text-skin-link */
+  --color-highlight: #facc15;        /* text-skin-highlight */
+  --color-selection-bg: #14b8a6;     /* Tailwind teal-500 or similar */
+  --color-selection-text: #0f172a;   /* Background color for contrast */
 }
 
 /* Optional: Light Theme */
-.theme-light {
-  --color-bg: #f8fafc;          /* slate-50 */
-  --color-text: #0f172a;        /* slate-900 */
-  --color-accent: #0ea5e9;      /* sky-400 */
-  --color-muted: #64748b;       /* slate-500 */
+[data-theme='light'] {
+  --color-bg: #f8fafc;               /* bg-skin-bg (slate-50) */
+  --color-text: #0f172a;             /* text-skin-text (slate-900) */
+  --color-muted: #64748b;            /* text-skin-muted (slate-500) */
+  --color-accent: #0ea5e9;           /* text-skin-accent (sky-400) */
+  --color-accent-bg: rgba(14, 165, 233, 0.1); /* bg-skin-accent-bg */
+  --color-heading: #334155;          /* text-skin-heading (slate-700) */
+  --color-link: #0ea5e9;             /* text-skin-link (sky-400) */
+  --color-highlight: #facc15;        /* text-skin-highlight (yellow-400) */
+  --color-selection-bg: #0ea5e9;     /* sky-400 */
+  --color-selection-text: #f8fafc;   /* light bg for contrast */
 }
 
+/* Optional: Future theme slot */
+[data-theme='future'] {
+  --color-bg: #0a0c10;
+  --color-text: #d1d5db;
+  --color-muted: #6b7280;
+  --color-accent: #8b5cf6;
+  --color-accent-bg: rgba(139, 92, 246, 0.1);
+  --color-heading: #9ca3af;
+  --color-link: #c084fc;
+  --color-highlight: #f472b6;
+  --color-selection-bg: #c084fc;     /* violet-400 */
+  --color-selection-text: #0f0f0f;
+}
+
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
+}
+
+/* Global body style */
 body {
   font-family: var(--font-inter);
-  @apply relative bg-slate-900 text-slate-200 antialiased overflow-x-hidden;
+  @apply relative bg-skin-bg text-skin-text antialiased overflow-x-hidden;
 }
-

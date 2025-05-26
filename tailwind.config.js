@@ -5,17 +5,20 @@ module.exports = {
   ],
   theme: {
     extend: {
-      skin: {
+      colors: {
+        skin: {
           bg: 'var(--color-bg)',
           text: 'var(--color-text)',
-          accent: 'var(--color-accent)',
           muted: 'var(--color-muted)',
+          accent: 'var(--color-accent)',
+          heading: 'var(--color-heading)',
+          link: 'var(--color-link)',
+          highlight: 'var(--color-highlight)',
+          'accent-bg': 'var(--color-accent-bg)',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-      },
-      backgroundImage: {
-        'spotlight': 'radial-gradient(...)' // optional if you want reusable class
       },
     },
   },

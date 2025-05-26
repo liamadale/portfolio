@@ -1,47 +1,49 @@
-.experience-section {
-  @apply mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24;
-}
+@layer utilities {
+  .experience-section {
+    @apply mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24;
+  }
 
-.experience-heading {
-  @apply text-sm font-bold uppercase tracking-widest text-slate-500 mb-6;
-}
+  .experience-heading {
+    @apply text-sm font-bold uppercase tracking-widest text-skin-heading mb-6;
+  }
 
-.experience-list {
-  @apply space-y-12;
-}
+  .experience-list {
+    @apply space-y-12;
+  }
 
-.job-entry {
-  @apply grid gap-4 sm:grid-cols-8 md:gap-6;
-}
+  .job-entry {
+    @apply grid gap-4 sm:grid-cols-8 md:gap-6;
+  }
 
-.job-time {
-  @apply text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2;
-}
+  .job-time {
+    @apply text-xs font-semibold uppercase tracking-wide text-skin-heading sm:col-span-2;
+  }
 
-.job-details {
-  @apply sm:col-span-6;
-}
+  .job-details {
+    @apply sm:col-span-6;
+  }
 
-.job-title {
-  @apply font-medium text-slate-200 text-base;
-}
+  .job-title {
+    @apply font-medium text-skin-text text-base;
+  }
 
-.job-link {
-  @apply inline-flex items-baseline hover:text-teal-300 focus-visible:text-teal-300;
-}
+  .job-link {
+    @apply inline-flex items-baseline hover:text-skin-accent focus-visible:text-skin-accent;
+  }
 
-.job-company {
-  @apply ml-1 text-teal-300 group-hover:underline;
-}
+  .job-company {
+    @apply ml-1 text-skin-accent group-hover:underline;
+  }
 
-.job-description {
-  @apply mt-2 text-sm leading-normal text-slate-400;
-}
+  .job-description {
+    @apply mt-2 text-sm leading-normal text-skin-muted;
+  }
 
-.job-tech-list {
-  @apply mt-2 flex flex-wrap gap-2;
-}
+  .job-tech-list {
+    @apply mt-2 flex flex-wrap gap-2;
+  }
 
-.job-tech {
-  @apply px-3 py-1 rounded-full text-xs font-medium leading-5 bg-teal-400/10 text-teal-300;
+  .job-tech {
+    @apply px-3 py-1 rounded-full text-xs font-medium leading-5 bg-skin-accent-bg text-skin-accent;
+  }
 }

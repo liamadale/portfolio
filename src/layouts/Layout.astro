@@ -1,6 +1,9 @@
 ---
 // Layout.astro
-const { title = "Liam Dale", description = "I'm working towards a career in cybersecurity. Focused on SOC analyst positions. " } = Astro.props;
+const { title = "Liam Dale", 
+description = "I'm working towards a career in cybersecurity. Focused on SOC analyst positions. ",
+theme = "dark"
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -16,13 +19,15 @@ const { title = "Liam Dale", description = "I'm working towards a career in cybe
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png" />
     <!-- FONTS ARE IMPORTED HERE -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f094ea114c.js" crossorigin="anonymous"></script>
     <!-- GLOBAL STYLING IS IMPORTED HERE -->
     <link rel="stylesheet" href="/src/styles/global.css" />
 
-    <script src="https://kit.fontawesome.com/f094ea114c.js" crossorigin="anonymous"></script>
+    <script src="/src/scripts/theme-toggle.js" defer></script>
+    <script src="/src/scripts/spotlight.js" defer></script>
   </head>
 
-  <body>
+  <body data-theme={theme}>
     <!-- Spotlight Effect Layer -->
     <div id="spotlight" class="pointer-events-none fixed inset-0 z-0"></div>
 
@@ -31,6 +36,5 @@ const { title = "Liam Dale", description = "I'm working towards a career in cybe
       <slot />
     </div>
 
-    <script src="/src/scripts/spotlight.js" defer></script>
   </body>
 </html>

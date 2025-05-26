@@ -1,23 +1,25 @@
-.about-section {
-  @apply scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24;
-}
+@layer utilities {
+  .about-section {
+    @apply scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24;
+  }
 
-.about-heading {
-  @apply text-sm font-bold uppercase tracking-widest text-slate-500 mb-6;
-}
+  .about-heading {
+    @apply text-sm font-bold uppercase tracking-widest text-skin-heading mb-6;
+  }
 
-.about-content {
-  @apply space-y-4 text-slate-400 text-sm leading-relaxed max-w-3xl;
-}
+  .about-content {
+    @apply space-y-4 text-skin-muted text-sm leading-relaxed max-w-3xl;
+  }
 
-.highlight {
-  @apply font-medium text-slate-200;
-}
+  .highlight {
+    @apply font-medium text-skin-text;
+  }
 
-.highlight-link {
-  @apply font-medium text-slate-200 hover:text-teal-300 focus-visible:text-teal-300;
-}
+  .highlight-link {
+    @apply font-medium text-skin-text hover:text-skin-accent focus-visible:text-skin-accent;
+  }
 
-.highlight-bold {
-  @apply font-semibold text-slate-200;
+  .highlight-bold {
+    @apply font-semibold text-skin-text;
+  }
 }
