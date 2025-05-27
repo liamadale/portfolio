@@ -1,18 +1,25 @@
 ---
 const projects = [
   {
-    title: "Spotify Profile Analyzer",
-    description: "A web app that uses the Spotify API to visualize your listening habits and generate fun reports.",
-    tech: ["React", "Node.js", "Spotify API"],
-    link: "https://github.com/bchiang7/spotify-profile",
-    live: "https://spotify-profile.herokuapp.com",
+    title: "Portfolio Website",
+    description: "A personal portfolio website showcasing my projects and skills, built with Astro.",
+    tech: ["Astro", "HTML", "CSS", "JavaScript"],
+    link: "https://github.com/liamadale/portfolio",
+    image: "https://github.com/liamadale/portfolio/blob/main/portfolio%20preview.png?raw=true",
   },
   {
-    title: "Personal Portfolio v4",
-    description: "My fourth iteration of a personal portfolio site, built to be fast, responsive, and accessible.",
-    tech: ["Next.js", "Tailwind CSS"],
-    link: "https://github.com/bchiang7/v4",
-    live: "https://brittanychiang.com",
+    title: "bcinfosec.club",
+    description: "A website for the Bellevue College InfoSec Club, featuring club information, events, and resources.",
+    tech: ["Hugo", "HTML", "CSS", "JavaScript"],
+    link: "https://github.com/bellevuecollegeinfosec/bcinfosec.club/tree/main",
+    image: "https://github.com/bellevuecollegeinfosec/bcinfosec.club/blob/main/bcinfosecscreenshot.png?raw=true",
+  },
+  {
+    title: "Photo Repository React App",
+    description: "A photo repository app built with React and Flask, allowing users to upload and manage their photos.",
+    tech: ["React", "Flask", "Python", "S3", "EC2", "AWS"],
+    link: "https://github.com/liamadale/photo-repository-react-app",
+    image: "https://github.com/liamadale/photo-repository-react-app/raw/main/imgs/photo-repo-demo.png",
   },
 ];
 ---
@@ -23,13 +30,20 @@ const projects = [
   <div class="projects-list">
     {projects.map((project) => (
       <div class="group project-entry">
+        <div class="project-image">
+          <a href={project.link} target="_blank" rel="noopener noreferrer">
+            <img
+              src={project.image}
+              alt={`Screenshot of ${project.title}`}
+              class="rounded-md object-cover w-full aspect-video border"
+              style="border-color: rgba(var(--color-muted-rgb), 0.3); border-width: 1px;"
+            />
+          </a>
+        </div>
+
         <div class="project-details">
           <h3>
-            <a
-              href={project.live}
-              target="_blank"
-              class="project-title"
-            >
+            <a href={project.link} target="_blank" class="project-title">
               <span class="project-clickable"></span>
               <span>
                 {project.title}
@@ -46,16 +60,9 @@ const projects = [
 
           <ul class="project-tech-list" aria-label="Technologies used:">
             {project.tech.map((t) => (
-              <li>
-                <div class="project-tech">{t}</div>
-              </li>
+              <li><div class="project-tech">{t}</div></li>
             ))}
           </ul>
-
-          <div class="project-links">
-            <a href={project.live} target="_blank" class="project-link">Live</a>
-            <a href={project.link} target="_blank" class="project-link">Code</a>
-          </div>
         </div>
       </div>
     ))}

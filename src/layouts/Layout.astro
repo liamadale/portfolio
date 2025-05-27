@@ -1,8 +1,7 @@
 ---
 // Layout.astro
 const { title = "Liam Dale", 
-description = "I'm working towards a career in cybersecurity. Focused on SOC analyst positions. ",
-theme = "dark"
+description = "I'm working towards a career in cybersecurity. Focused on SOC analyst positions. "
 } = Astro.props;
 ---
 
@@ -13,21 +12,27 @@ theme = "dark"
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    
+    <!-- Default favicon (dark as fallback) -->
+    <link id="favicon" rel="icon" href="/favicon/dark/favicon.ico" />
 
-    <!-- Favicon and social meta (optional for now) -->
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png" />
     <!-- FONTS ARE IMPORTED HERE -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f094ea114c.js" crossorigin="anonymous"></script>
     <!-- GLOBAL STYLING IS IMPORTED HERE -->
     <link rel="stylesheet" href="/src/styles/global.css" />
 
+    <script>
+      const theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+      document.documentElement.setAttribute("data-theme", theme);
+    </script>
+
     <script src="/src/scripts/theme-toggle.js" defer></script>
     <script src="/src/scripts/spotlight.js" defer></script>
+    <script src="/src/scripts/scroll-spy.js" defer></script>
   </head>
 
-  <body data-theme={theme}>
+  <body>
     <!-- Spotlight Effect Layer -->
     <div id="spotlight" class="pointer-events-none fixed inset-0 z-0"></div>
 

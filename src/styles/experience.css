@@ -12,7 +12,21 @@
   }
 
   .job-entry {
-    @apply grid gap-4 sm:grid-cols-8 md:gap-6;
+    @apply grid gap-4 sm:grid-cols-8 md:gap-6 relative rounded-md 
+          shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
+          transition duration-300;
+
+    /* Transparent by default */
+    background-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+    padding: 1.15rem 1.15rem;
+  }
+
+  .job-entry:hover {
+    background-color: rgba(var(--color-muted-rgb), 0.1); /* very subtle */
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 0 2px rgba(var(--color-muted-rgb), 0.3); /* optional subtle hover shadow */
   }
 
   .job-time {
@@ -45,5 +59,17 @@
 
   .job-tech {
     @apply px-3 py-1 rounded-full text-xs font-medium leading-5 bg-skin-accent-bg text-skin-accent;
+  }
+  
+  .edu-title {
+    @apply flex flex-col text-base font-medium text-skin-text;
+  }
+
+  .edu-degree {
+    @apply text-base font-medium text-skin-text;
+  }
+
+  .edu-school {
+    @apply text-sm text-skin-accent hover:underline;
   }
 }

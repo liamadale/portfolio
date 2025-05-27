@@ -7,6 +7,7 @@
   --color-bg: #0f172a;               /* bg-skin-bg */
   --color-text: #e2e8f0;             /* text-skin-text */
   --color-muted: #94a3b8;            /* text-skin-muted */
+  --color-muted-rgb: 148,163,184; /* Add this line */
   --color-accent: #14b8a6;           /* text-skin-accent */
   --color-accent-bg: rgba(45, 212, 191, 0.1); /* bg-skin-accent-bg */
   --color-heading: #64748b;          /* text-skin-heading */
@@ -42,6 +43,21 @@
   --color-highlight: #f472b6;
   --color-selection-bg: #c084fc;     /* violet-400 */
   --color-selection-text: #0f0f0f;
+}
+
+/* Half-Life Inspired Theme */
+[data-theme='halflife'] {
+  --color-bg: #1a120c;                /* Dark burnt background */
+  --color-text: #fefae0;              /* Pale worn parchment */
+  --color-muted: #c28858;             /* Faded industrial rust */
+  --color-muted-rgb: 194, 136, 88;    /* For transparency uses */
+  --color-accent: #ff6f1f;            /* HEV suit orange */
+  --color-accent-bg: rgba(255, 111, 31, 0.1); /* Accent bg tint */
+  --color-heading: #ffb35c;           /* Highlighted header orange */
+  --color-link: #ffc878;              /* Radiated light orange */
+  --color-highlight: #d9480f;         /* Red-orange rust spot */
+  --color-selection-bg: #ff6f1f;      /* Selection in signature orange */
+  --color-selection-text: #1a120c;    /* Dark base for contrast */
 }
 
 ::selection {

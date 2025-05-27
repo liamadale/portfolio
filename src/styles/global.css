@@ -8,5 +8,16 @@
 @tailwind utilities;
 
 #spotlight {
-  transition: background 0.2s ease;
+  transition: background 0.3s ease;
+  z-index: 0;
+}
+
+.nav-link.active .nav-indicator {
+  width: 2rem;
+  background-color: var(--color-accent);
+  transition: width 300ms ease, background-color 300ms ease;
+}
+
+.nav-link.active .nav-text {
+  color: var(--color-accent);
 }

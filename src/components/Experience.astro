@@ -31,7 +31,7 @@ const jobs = [
     company: "Littell House Construction LLC",
     title: "Apprentice Carpenter",
     timeframe: "Sep 2022 — Nov 2022",
-    url: "",
+    url: "https://littellhouseconstruction.com/",
     description:
       "Assisted in residential construction and carpentry projects, gaining hands-on experience with tools and teamwork.",
     tech: [],
@@ -61,14 +61,16 @@ const education = [
     degree: "Bachelor of Applied Science in Cybersecurity",
     timeframe: "Mar 2024 — Dec 2026",
     location: "Bellevue, WA",
+    url: "https://www.bellevuecollege.edu/cybersecurity/",
     gpa: "3.7 / 4.0",
-    relevantCourses: ["Python", "Networking Series", "Intro to AWS"],
+    relevantCourses: ["Python", "Networking Series (CCNA)", "Intro to AWS"],
   },
   {
     school: "University of Washington — Seattle",
     degree: "General Education",
     timeframe: "Sep 2020 — Dec 2022",
     location: "Seattle, WA",
+    url: "https://www.washington.edu/",
     gpa: "3.7 / 4.0",
     relevantCourses: ["Java I", "Java II"],
   },
@@ -76,9 +78,8 @@ const education = [
 ---
 
 <section id="experience" class="experience-section">
-  <h2 class="experience-heading">Experience</h2>
+  <h2 class="experience-heading">Work Experience</h2>
 
-  <h3 class="job-title">Work Experience</h3>
   <ol class="experience-list">
     {jobs.map(job => (
       <li>
@@ -106,6 +107,7 @@ const education = [
     ))}
   </ol>
 
+  <br>
   <h2 class="experience-heading">Education</h2>
   <ol class="experience-list">
     {education.map(school => (
@@ -115,13 +117,20 @@ const education = [
             {school.timeframe}
           </time>
           <div class="job-details">
-            <h3 class="job-title">
-              <span class="job-company">{school.degree}</span> · {school.school}
+            <h3 class="edu-title">
+              <span class="edu-degree">{school.degree}</span>
+              <a href={school.url} target="_blank" rel="noopener noreferrer" class="edu-school">
+                {school.school}
+              </a>
             </h3>
             <p class="job-description">GPA: {school.gpa}</p>
-            <p class="job-description">
-              Relevant Coursework: {school.relevantCourses.join(", ")}
-            </p>
+            <ul class="job-tech-list">
+              {school.relevantCourses.map(t => (
+                <li>
+                  <span class="job-tech">{t}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </li>

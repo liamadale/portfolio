@@ -22,7 +22,7 @@ const navItems = [
         <ul>
           {navItems.map((item) => (
             <li>
-              <a href={item.href} class="group nav-link">
+              <a href={item.href} class="group nav-link" data-section={item.href.replace("#", "")}>
                 <span class="nav-indicator"></span>
                 <span class="nav-text">{item.name}</span>
               </a>
@@ -32,34 +32,24 @@ const navItems = [
       </nav>
     </div>
   </div>
-  
+
   {/* Social media links in the footer */}
   <footer class="hero-footer">
     <ul class="social-links">
       <li>
-        <a href="https://github.com/yourusername" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/liamadale" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-github"></i>
         </a>
       </li>
       <li>
-        <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <a href="https://linkedin.com/in/liamadale" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-linkedin"></i>
         </a>
       </li>
       <li>
-        <a href="https://codepen.io/yourusername" aria-label="CodePen" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-codepen"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://instagram.com/yourusername" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-      </li>
-      <li>
-        <a href="https://goodreads.com/yourusername" aria-label="Goodreads" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-goodreads"></i>
-        </a>
+        <button id="theme-toggle">
+          <i class="fa-solid fa-palette text-2xl"></i>
+        </button>
       </li>
     </ul>
   </footer>
