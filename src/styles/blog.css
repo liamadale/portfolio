@@ -1,89 +1,79 @@
 @layer components {
-  .projects-section {
+  .blog-section {
     @apply scroll-mt-16 mb-24 lg:scroll-mt-24 lg:mb-36;
   }
 
-  .projects-heading {
+  .blog-heading {
     @apply text-sm font-bold uppercase tracking-widest text-skin-heading mb-6;
   }
 
-  .projects-list {
+  .blog-list {
     @apply space-y-12;
   }
 
-  .project-entry {
+  .blog-entry {
     @apply grid gap-4 sm:grid-cols-8 md:gap-6 relative rounded-md 
-          shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
-          transition duration-300;
+           transition duration-300;
 
-    /* Transparent by default */
     background-color: transparent;
     backdrop-filter: none;
     box-shadow: none;
     padding: 1.15rem 1.15rem;
   }
 
-  .project-entry:hover {
-    background-color: rgba(var(--color-muted-rgb), 0.1); /* very subtle */
+  .blog-entry:hover {
+    background-color: rgba(var(--color-muted-rgb), 0.1);
     backdrop-filter: blur(8px);
-    box-shadow: 0 0 0 2px rgba(var(--color-muted-rgb), 0.3); /* optional subtle hover shadow */
+    box-shadow: 0 0 0 2px rgba(var(--color-muted-rgb), 0.3);
   }
 
-  .project-details {
-    @apply z-10 sm:order-2 sm:col-span-6;
+  .blog-date {
+    @apply text-xs font-semibold uppercase tracking-wide text-skin-muted sm:col-span-2;
   }
 
-  .project-title {
+  .blog-details {
+    @apply z-10 sm:col-span-6;
+  }
+
+  .blog-title {
     @apply inline-flex items-baseline font-medium leading-tight text-skin-text hover:text-skin-accent focus-visible:text-skin-accent text-base;
   }
 
-  .project-clickable {
+  .blog-title-clickable {
     @apply absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block;
   }
 
-  .project-icon {
+  .blog-icon {
     @apply inline-block ml-1;
   }
 
-  .project-icon-svg {
+  .blog-icon-svg {
     @apply h-4 w-4 shrink-0 transition-transform;
   }
 
-  .project-description {
+  .blog-description {
     @apply mt-2 text-sm leading-normal text-skin-muted;
   }
 
-  .project-tech-list {
+  .blog-tags {
     @apply mt-2 flex flex-wrap;
   }
 
-  .project-tech {
+  .blog-tag {
     @apply flex items-center rounded-full bg-skin-accent-bg px-3 py-1 text-xs font-medium leading-5 text-skin-accent mr-1.5 mt-2;
   }
 
-  .project-links {
-    @apply mt-2 space-x-4;
-  }
-
-  .project-link {
-    @apply text-sm text-skin-muted hover:text-skin-accent;
-  }
-
-  .project-image {
-    @apply sm:col-span-2 relative z-10;
-  }
-
-  .project-image img {
-    @apply rounded-md border object-cover w-full aspect-video sm:col-span-2;
+  .blog-footer-link {
+    @apply mt-8 inline-block text-sm font-semibold text-skin-accent hover:underline transition;
   }
 }
 
 @media (min-width: 1024px) {
-  .project-entry:hover {
+  .blog-entry:hover {
     opacity: 1 !important;
   }
 
-  .group-hover\:opacity-50:hover ~ .project-entry {
+  .group-hover\:opacity-50:hover ~ .blog-entry {
     opacity: 0.5;
   }
 }

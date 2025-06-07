@@ -3,6 +3,7 @@
 @import './about.css';
 @import './experience.css';
 @import './projects.css';
+@import './blog.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
