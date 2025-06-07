@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+type BlogPost = CollectionEntry<'blog'>;
+
+const posts: BlogPost[] = await getCollection('blog');
+---
+
+<Layout title="Blog">
+  <main>
+    <div class="container mx-auto py-8">
+      <h1 class="text-3xl font-bold mb-4">Blog</h1>
+      <ul>
+        {posts.map((post: BlogPost) => (
+          <li class="mb-2">
+            <a href={`/blog/${post.slug}/`} class="text-blue-500 hover:underline">{post.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+</Layout>
