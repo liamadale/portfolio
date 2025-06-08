@@ -21,12 +21,9 @@ const { posts, page, total } = Astro.props as {
   page: number;
   total: number;
 };
-
 ---
 
-
-
-<Layout title={`Blog - Page ${page}`}> 
+<Layout title={`Blog - Page ${page}`}>
   <main>
     <div class="container mx-auto py-8">
       <h1 class="text-3xl font-bold mb-4">Blog</h1>
@@ -34,3 +31,13 @@ const { posts, page, total } = Astro.props as {
         {posts.map((post) => (
           <li class="mb-2">
             <a href={`/blog/${post.slug}/`} class="text-blue-500 hover:underline">{post.data.title}</a>
+          </li>
+        ))}
+      </ul>
+      <nav class="mt-4 flex gap-2">
+        {page > 1 && <a href={page - 1 === 1 ? '/blog/' : `/blog/page/${page - 1}/`}>&laquo; Prev</a>}
+        {page < total && <a href={`/blog/page/${page + 1}/`}>Next &raquo;</a>}
+      </nav>
+    </div>
+  </main>
+</Layout>
