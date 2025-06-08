@@ -1,0 +1,28 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+
+console.log('[ImageShortcode] props:', Astro.props);
+
+const { src, alt, width, height } = Astro.props;
+
+const imageMap: Record<string, any> = {
+  '/assets/images/logo.jpg': await import('../../assets/images/logo.jpg'),
+};
+
+const image = imageMap[src];
+
+import { Image } from 'astro:assets';
+---
+
+{image ? (
+  <Image src={image.default} alt={alt} width={width} height={height} />
+) : (
+  <div class="bg-yellow-500 text-black p-2">
+    <p>⚠️ Image not found for <strong>{src}</strong></p>
+  </div>
+)}

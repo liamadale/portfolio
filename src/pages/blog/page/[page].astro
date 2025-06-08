@@ -2,9 +2,8 @@
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
-const POSTS_PER_PAGE = 5;
-
 export async function getStaticPaths() {
+  const POSTS_PER_PAGE = 5;
   const allPosts = (await getCollection('blog')).sort((a,b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
   return Array.from({ length: total }).map((_, i) => {
@@ -22,7 +21,10 @@ const { posts, page, total } = Astro.props as {
   page: number;
   total: number;
 };
+
 ---
+
+
 
 <Layout title={`Blog - Page ${page}`}> 
   <main>
@@ -32,13 +34,3 @@ const { posts, page, total } = Astro.props as {
         {posts.map((post) => (
           <li class="mb-2">
             <a href={`/blog/${post.slug}/`} class="text-blue-500 hover:underline">{post.data.title}</a>
-          </li>
-        ))}
-      </ul>
-      <nav class="mt-4 flex gap-2">
-        {page > 1 && <a href={page - 1 === 1 ? '/blog/' : `/blog/page/${page - 1}/`}>&laquo; Prev</a>}
-        {page < total && <a href={`/blog/page/${page + 1}/`}>Next &raquo;</a>}
-      </nav>
-    </div>
-  </main>
-</Layout>

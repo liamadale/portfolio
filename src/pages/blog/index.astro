@@ -11,6 +11,8 @@ const allPosts: BlogPost[] = (await getCollection('blog')).sort(
 );
 const posts = allPosts.slice(0, POSTS_PER_PAGE);
 const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+console.log(allPosts.map(p => p.slug));
 ---
 
 <Layout title="Blog">
