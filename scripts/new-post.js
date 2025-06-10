@@ -12,6 +12,11 @@ const slug = slugArg || title.toLowerCase().replace(/\s+/g, '-');
 const today = new Date().toISOString().split('T')[0];
 const filePath = path.join('src/content/blog', `${slug}.md`);
 
+if (fs.existsSync(filePath)) {
+  console.error(`Error: ${filePath} already exists.`);
+  process.exit(1);
+}
+
 const frontmatter = `---\ntitle: ${title}\npubDate: ${today}\n---\n\n`; // Add tags or category manually after creation
 
 fs.writeFileSync(filePath, frontmatter);
