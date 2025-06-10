@@ -4,6 +4,7 @@
 @import './experience.css';
 @import './projects.css';
 @import './blog.css';
+@import './blog-posts.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -12,10 +12,12 @@
   "dependencies": {
     "@astrojs/mdx": "^0.11.6",
     "astro": "^5.8.0",
-    "astro-content": "^0.0.0-alpha.13"
+    "remark-shortcodes": "^0.3.1",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.16",
     "tailwindcss": "^3.4.17"
   }
 }

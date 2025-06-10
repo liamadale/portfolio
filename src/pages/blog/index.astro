@@ -18,11 +18,11 @@ console.log(allPosts.map(p => p.slug));
 <Layout title="Blog">
   <main>
     <div class="container mx-auto py-8">
-      <h1 class="text-3xl font-bold mb-4">Blog</h1>
+      <h1 class="text-3xl font-bold mb-4">Posts</h1>
       <ul>
         {posts.map((post: BlogPost) => (
           <li class="mb-2">
-            <a href={`/blog/${post.slug}/`} class="text-blue-500 hover:underline">{post.data.title}</a>
+            <a href={`/blog/${post.slug}/`} class="font-medium text-skin-text hover:underline hover:text-skin-accent focus-visible:text-skin-accent">{post.data.title}</a>
           </li>
         ))}
       </ul>
