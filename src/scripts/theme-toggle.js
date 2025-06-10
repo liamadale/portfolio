@@ -8,10 +8,6 @@ function getInitialTheme() {
   return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const theme = getInitialTheme();
-  setTheme(theme);
-});
 
 function setTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
@@ -47,10 +43,9 @@ function activateHalfLifeTheme() {
 
 window.activateHalfLifeTheme = activateHalfLifeTheme;
 
-// Optional: apply saved theme on load
 document.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("theme") || "dark";
-  setTheme(saved);
+  const theme = getInitialTheme();
+  setTheme(theme);
 
   const toggleBtn = document.getElementById("theme-toggle");
   if (toggleBtn) {
