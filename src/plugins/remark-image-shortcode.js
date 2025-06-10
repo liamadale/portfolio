@@ -1,5 +1,7 @@
 import { visit } from 'unist-util-visit';
 
+console.log("🛠️ remarkImageShortcode plugin running");
+
 /**
  * Remark plugin to transform custom Image shortcode into an `image` node.
  * Matches patterns like:
@@ -8,8 +10,9 @@ import { visit } from 'unist-util-visit';
 export default function remarkImageShortcode() {
   return function transformer(tree) {
     visit(tree, 'text', (node, index, parent) => {
+      console.log("🔍 Visiting node:", node.value);
       if (!parent || typeof node.value !== 'string') return;
-      const regex = /{{<\s*Image([^>]+)>}}/g;
+      const regex = /{{<\s*Image\s+([^>]+?)\s*>}}/g;
       const value = node.value;
       let match;
       let lastIndex = 0;
@@ -21,12 +24,17 @@ export default function remarkImageShortcode() {
         }
 
         const attrsString = match[1];
-        const attrRegex = /(\w+)="([^"]*)"/g;
+        const attrRegex = /(\w+)\s*=\s*["']([^"']*)["']/g;
         const props = {};
         let attrMatch;
         while ((attrMatch = attrRegex.exec(attrsString))) {
           props[attrMatch[1]] = attrMatch[2];
         }
+        if (!props.src) {
+          console.warn("Image shortcode missing `src`: ", match[0]);
+          return;
+        }
+
 
         const attrs = Object.entries(props)
           .map(([k, v]) => `${k}="${v}"`)
