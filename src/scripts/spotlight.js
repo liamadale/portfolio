@@ -1,4 +1,5 @@
 const spotlight = document.getElementById("spotlight");
+const themeRoot = document.documentElement;
 
 let targetX = 0;
 let targetY = 0;
@@ -20,7 +21,6 @@ function hexToRgb(hex) {
 }
 
 function updateAccentFromTheme() {
-  const themeRoot = document.querySelector("[data-theme]") || document.documentElement;
   const theme = themeRoot.getAttribute("data-theme") || "default";
 
   if (theme !== currentTheme) {
@@ -29,9 +29,6 @@ function updateAccentFromTheme() {
     currentAccent = accentRgb;
     currentTheme = theme;
 
-    console.log(`[theme-switch] Theme: ${theme}`);
-    console.log(`[theme-switch] --color-accent: ${accentHex}`);
-    console.log(`[theme-switch] Computed RGB: ${accentRgb}`);
   }
 }
 
