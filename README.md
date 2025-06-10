@@ -2,6 +2,8 @@
 
 Created using the Astro framework.
 
+![Screenshot of Website](https://raw.githubusercontent.com/liamadale/portfolio/refs/heads/main/portfolio%20preview.png)
+
 ## 🚀 Project Structure
 
 Below is an expanded overview of the repository. The tree lists the most important directories and files while omitting heavy folders like `node_modules`.
