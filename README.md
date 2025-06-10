@@ -1,4 +1,4 @@
-## Portfolio Website
+## Liam's Portfolio Website
 
 Created using the Astro framework.
 
@@ -14,22 +14,13 @@ Below is an expanded overview of the repository. The tree lists the most importa
 ├── astro.config.mjs
 ├── package-lock.json
 ├── package.json
-├── portfolio preview.png
 ├── postcss.config.js
 ├── public
 │   ├── favicon
-│   │   ├── dark
-│   │   ├── future
-│   │   ├── halflife
-│   │   └── light
 │   └── images
-│       └── cat.png
 ├── scripts
-│   ├── new-post.js
-│   └── tree.js
 ├── src
 │   ├── assets
-│   │   └── audio
 │   ├── components
 │   │   ├── About.astro
 │   │   ├── BlogSection.astro
@@ -46,20 +37,8 @@ Below is an expanded overview of the repository. The tree lists the most importa
 │   │   ├── blog
 │   │   └── index.astro
 │   ├── plugins
-│   │   └── remark-image-shortcode.js
 │   ├── scripts
-│   │   ├── scroll-spy.js
-│   │   ├── spotlight.js
-│   │   └── theme-toggle.js
 │   └── styles
-│       ├── about.css
-│       ├── blog-posts.css
-│       ├── blog.css
-│       ├── experience.css
-│       ├── global.css
-│       ├── hero.css
-│       ├── projects.css
-│       └── themes.css
 ├── tailwind.config.js
 └── tsconfig.json
 ```
@@ -67,7 +46,7 @@ Below is an expanded overview of the repository. The tree lists the most importa
 ### Directory Overview
 
 - **public** - Static files that get served as-is. Icons, images and other assets live here.
-- **scripts** - Utility scripts. `new-post.js` scaffolds blog posts and `tree.js` generates the directory tree.
+- **scripts** - Utility scripts.
 - **src** - Source code for the site.
   - **assets** - Media resources such as audio files.
   - **components** - Reusable UI components written as Astro components.
