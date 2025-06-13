@@ -1,14 +1,14 @@
 import { visit } from 'unist-util-visit';
 
 /**
- * Remark plugin to transform custom Image shortcode into an `img` element.
- * Matches patterns like:
- *   {{< Image src="/path" alt="Alt" width="600" height="400" >}}
+ * Remark plugin to transform custom Image shortcode into an HTML <img> element.
+ * Matches patterns like `{{< Image src="/path" alt="Alt" width="600" height="400" >}}`.
  */
 export default function remarkImageShortcode() {
   return function transformer(tree) {
     visit(tree, 'text', (node, index, parent) => {
       if (!parent || typeof node.value !== 'string') return;
+
       const regex = /{{<\s*Image([^>]+)>}}/g;
       const value = node.value;
       let match;
@@ -23,17 +23,24 @@ export default function remarkImageShortcode() {
         const attrsString = match[1];
         const attrRegex = /(\w+)="([^"]*)"/g;
         let attrMatch;
-        const attributes = [];
+        const attrs = {};
         while ((attrMatch = attrRegex.exec(attrsString))) {
-          attributes.push({ type: 'mdxJsxAttribute', name: attrMatch[1], value: attrMatch[2] });
+          attrs[attrMatch[1]] = attrMatch[2];
         }
 
-        newNodes.push({
-          type: 'mdxJsxFlowElement',
-          name: 'img',
-          attributes,
-          children: [],
-        });
+        const imageNode = {
+          type: 'image',
+          url: attrs.src || '',
+          title: null,
+          alt: attrs.alt || '',
+          data: {
+            hProperties: {
+              width: attrs.width,
+              height: attrs.height,
+            },
+          },
+        };
+        newNodes.push(imageNode);
 
         lastIndex = match.index + match[0].length;
       }
