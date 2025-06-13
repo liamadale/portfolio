@@ -10,14 +10,14 @@
   .post-header-image {
     @apply w-full max-h-[400px] object-cover rounded-xl shadow mb-6;
   }
-  
+
   .blog-post-content {
     /* Mobile: small margin; Desktop: much wider content area */
     @apply prose prose-skin prose-lg mx-4 sm:mx-8 md:mx-16 lg:mx-32 xl:mx-auto;
     max-width: 80ch;
   }
   .blog-post-content img {
-    @apply rounded-lg shadow-md my-6;
+    @apply mx-auto my-6 rounded-lg shadow-md;
   }
 
   .blog-post-content h2 {

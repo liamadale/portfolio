@@ -7,44 +7,61 @@ import { visit } from 'unist-util-visit';
  */
 export default function remarkImageShortcode() {
   return function transformer(tree) {
-    visit(tree, 'text', (node, index, parent) => {
-      if (!parent || typeof node.value !== 'string') return;
-      const regex = /{{<\s*Image([^>]+)>}}/g;
-      const value = node.value;
-      let match;
-      let lastIndex = 0;
-      const newNodes = [];
+    visit(tree, 'paragraph', (node, index, parent) => {
+      const newChildren = [];
 
-      while ((match = regex.exec(value))) {
-        if (match.index > lastIndex) {
-          newNodes.push({ type: 'text', value: value.slice(lastIndex, match.index) });
+      node.children.forEach((child) => {
+        if (child.type === 'text' && typeof child.value === 'string') {
+          const regex = /{{<\s*Image([^>]+)>}}/g;
+          let lastIndex = 0;
+          let match;
+
+          while ((match = regex.exec(child.value))) {
+
+            if (match.index > lastIndex) {
+              newChildren.push({
+                type: 'text',
+                value: child.value.slice(lastIndex, match.index),
+              });
+            }
+
+            const attrsString = match[1];
+            const attrRegex = /(\w+)="([^"]*)"/g;
+            let attrMatch;
+            const attrs = {};
+
+            while ((attrMatch = attrRegex.exec(attrsString))) {
+              attrs[attrMatch[1]] = attrMatch[2];
+            }
+
+            newChildren.push({
+              type: 'image',
+              url: attrs.src || '',
+              title: null,
+              alt: attrs.alt || '',
+              data: {
+                hProperties: {
+                  width: attrs.width,
+                  height: attrs.height,
+                },
+              },
+            });
+
+            lastIndex = match.index + match[0].length;
+          }
+
+          if (lastIndex < child.value.length) {
+            newChildren.push({
+              type: 'text',
+              value: child.value.slice(lastIndex),
+            });
+          }
+        } else {
+          newChildren.push(child);
         }
+      });
 
-        const attrsString = match[1];
-        const attrRegex = /(\w+)="([^"]*)"/g;
-        let attrMatch;
-        const attributes = [];
-        while ((attrMatch = attrRegex.exec(attrsString))) {
-          attributes.push({ type: 'mdxJsxAttribute', name: attrMatch[1], value: attrMatch[2] });
-        }
-
-        newNodes.push({
-          type: 'mdxJsxFlowElement',
-          name: 'img',
-          attributes,
-          children: [],
-        });
-
-        lastIndex = match.index + match[0].length;
-      }
-
-      if (newNodes.length) {
-        if (lastIndex < value.length) {
-          newNodes.push({ type: 'text', value: value.slice(lastIndex) });
-        }
-        parent.children.splice(index, 1, ...newNodes);
-        return index + newNodes.length;
-      }
+      node.children = newChildren;
     });
   };
 }

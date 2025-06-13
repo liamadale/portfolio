@@ -8,6 +8,7 @@ export default defineConfig({
     tailwind(),
   ],
   markdown: {
+    smartypants: false,
     remarkPlugins: [remarkImageShortcode],
   },
 });
