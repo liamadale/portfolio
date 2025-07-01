@@ -6,7 +6,10 @@ category: general
 image: "/images/eternalblue/cover.png"
 alt: "Funky image of a cat"
 tags: 
-    - testing
+    - cve-2017-0144
+    - eternalblue
+    - windows-7
+    - vulnerability-demo
 ---
 
 ### Preface
