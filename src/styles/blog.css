@@ -1,4 +1,25 @@
 @layer components {
+
+    /* make your entry a 8-col grid */
+  .blog-entry {
+    @apply grid gap-4 sm:grid-cols-8 md:gap-6 relative rounded-md transition duration-300;
+    padding: 1.15rem;
+    background-color: transparent;
+  }
+
+  /* 1️⃣ thumbnail cell */
+  .blog-image {
+    @apply sm:col-span-2 relative z-10;
+  }
+  .blog-image img {
+    @apply rounded-md border object-cover w-full aspect-video;
+  }
+
+  /* 2️⃣ details cell */
+  .blog-details {
+    @apply z-10 sm:col-span-6;
+  }
+
   .blog-section {
     @apply scroll-mt-16 mb-24 lg:scroll-mt-24 lg:mb-36;
   }

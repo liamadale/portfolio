@@ -1,7 +1,7 @@
 ---
 title: 🔐 BC InfoSec — Eternal Blue Demo
 pubDate: "2025-06-08"
-description: "Eternal Blue Demo"
+description: "Hands-on EternalBlue exploit demo on Windows 7."
 category: general
 image: "/images/eternalblue/cover.png"
 alt: "Funky image of a cat"

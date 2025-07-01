@@ -1,4 +1,41 @@
 @layer components {
+
+    .post-header {
+    @apply mb-8;
+  }
+
+  .blog-post-title {
+    @apply text-3xl font-bold text-skin-heading mb-2;
+  }
+
+  .post-meta {
+    @apply flex items-center text-sm text-skin-muted mb-4;
+  }
+  .post-meta-date {
+    /* nothing extra, inherits post-meta */
+  }
+  .post-meta-category {
+    @apply capitalize;
+  }
+
+  .post-header-image {
+    @apply w-full rounded-md object-cover mb-8;
+    /* if you want a fixed aspect ratio, e.g.: */
+    /* aspect-video; */
+  }
+
+  .blog-post-content {
+    @apply prose prose-skin max-w-none;
+  }
+
+  /* Optional: style tags at bottom of post */
+  .post-tags {
+    @apply flex flex-wrap gap-2 mt-8;
+  }
+  .post-tags .blog-tag {
+    @apply bg-skin-accent-bg text-skin-accent px-3 py-1 rounded-full text-xs;
+  }
+
   .blog-post-wrapper {
     @apply max-w-3xl mx-auto px-4 sm:px-6 lg:px-8;
   }

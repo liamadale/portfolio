@@ -13,18 +13,28 @@ const posts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
     {posts.map((post) => (
       <li>
         <div class="blog-entry group">
-          <header class="blog-date">
-            {post.data.pubDate.toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric'
-            })}
-          </header>
+          <!-- thumbnail -->
+          <div class="blog-image">
+            <a
+              href={`/blog/${post.slug}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={post.data.image}
+                alt={post.data.alt ?? post.data.title}
+                class="rounded-md object-cover w-full aspect-video border"
+                style="border-color: rgba(var(--color-muted-rgb), 0.3); border-width: 1px;"
+              />
+            </a>
+          </div>
 
+          <!-- details -->
           <div class="blog-details">
+
             <h3>
               <a
-                href={`/blog/${post.slug}`}
+                href={`/blog/${post.slug}/`}
                 class="blog-title group/link"
                 aria-label={`${post.data.title} (opens in a new tab)`}
               >
@@ -51,6 +61,14 @@ const posts: CollectionEntry<'blog'>[] = (await getCollection('blog'))
             </h3>
 
             <p class="blog-description">{post.data.description}</p>
+
+            <header class="blog-date">
+              {post.data.pubDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </header>
 
             {post.data.tags && (
               <ul class="blog-tags" aria-label="Tags">
