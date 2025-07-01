@@ -4,6 +4,7 @@ import remarkImageShortcode from './src/plugins/remark-image-shortcode.js';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://liamadale.com',
   integrations: [
     tailwind(),
   ],
