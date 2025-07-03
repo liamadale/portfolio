@@ -3,6 +3,7 @@
 const { title = "Liam Dale", 
 description = "I'm working towards a career in cybersecurity. Focused on SOC analyst positions. "
 } = Astro.props;
+import "../styles/global.css";
 ---
 
 <!DOCTYPE html>
@@ -19,17 +20,15 @@ description = "I'm working towards a career in cybersecurity. Focused on SOC ana
     <!-- FONTS ARE IMPORTED HERE -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f094ea114c.js" crossorigin="anonymous"></script>
-    <!-- GLOBAL STYLING IS IMPORTED HERE -->
-    <link rel="stylesheet" href="./src/styles/global.css" />
 
     <script>
       const theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
       document.documentElement.setAttribute("data-theme", theme);
     </script>
 
-    <script src="./src/scripts/theme-toggle.js" defer></script>
-    <script src="./src/scripts/spotlight.js" defer></script>
-    <script src="./src/scripts/scroll-spy.js" defer></script>
+    <script src="/scripts/theme-toggle.js" defer></script>
+    <script src="/scripts/spotlight.js" defer></script>
+    <script src="/scripts/scroll-spy.js" defer></script>
   </head>
 
   <body>
