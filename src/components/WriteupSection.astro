@@ -1,0 +1,93 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+const writeups: CollectionEntry<'writeups'>[] = (await getCollection('writeups'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<section id="writeups" class="blog-section" style="min-height: 200px;">
+  <h2 class="blog-heading">Writeups</h2>
+
+  {writeups.length > 0 ? (
+    <ul class="blog-list group/posts">
+      {writeups.map((writeup) => (
+      <li>
+        <div class="blog-entry group">
+          <!-- thumbnail -->
+          <div class="blog-image">
+            <a
+              href={`/writeups/${writeup.slug}/`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={writeup.data.image}
+                alt={writeup.data.alt ?? writeup.data.title}
+                class="rounded-md object-cover w-full aspect-video border"
+                style="border-color: rgba(var(--color-muted-rgb), 0.3); border-width: 1px;"
+              />
+            </a>
+          </div>
+
+          <!-- details -->
+          <div class="blog-details">
+
+            <h3>
+              <a
+                href={`/writeups/${writeup.slug}/`}
+                class="blog-title group/link"
+                aria-label={`${writeup.data.title} (opens in a new tab)`}
+              >
+                <span class="blog-title-clickable"></span>
+                <span>
+                  {writeup.data.title}
+                  <span class="blog-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="blog-icon-svg group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </h3>
+
+            <p class="blog-description">{writeup.data.description}</p>
+
+            <header class="blog-date">
+              {writeup.data.pubDate.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </header>
+
+            {writeup.data.tags && (
+              <ul class="blog-tags" aria-label="Tags">
+                {writeup.data.tags.map((tag: string) => (
+                  <li><div class="blog-tag">{tag}</div></li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="blog-description">No writeups available yet. Check back soon!</p>
+  )}
+
+  <a href="/writeups" class="blog-footer-link">
+    View all writeups →
+  </a>
+</section>

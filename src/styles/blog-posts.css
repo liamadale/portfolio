@@ -24,9 +24,7 @@
     /* aspect-video; */
   }
 
-  .blog-post-content {
-    @apply prose prose-skin max-w-none;
-  }
+
 
   /* Optional: style tags at bottom of post */
   .post-tags {
@@ -37,7 +35,7 @@
   }
 
   .blog-post-wrapper {
-    @apply max-w-3xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .blog-post-header {
@@ -49,12 +47,14 @@
   }
 
   .blog-post-content {
-    /* Mobile: small margin; Desktop: much wider content area */
-    @apply prose prose-skin prose-lg mx-4 sm:mx-8 md:mx-16 lg:mx-32 xl:mx-auto;
-    max-width: 80ch;
+    /* Wider content area for better readability */
+    @apply prose prose-skin prose-lg mx-auto;
+    max-width: 100ch;
   }
   .blog-post-content img {
     @apply mx-auto my-6 rounded-lg shadow-md;
+    max-width: 75%;
+    height: auto;
   }
 
   .blog-post-content h2 {
