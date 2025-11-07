@@ -26,7 +26,24 @@ const writeupCollection = defineCollection({
   }),
 });
 
+const projectCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.coerce.date(),
+    description: z.string(),
+    tech: z.array(z.string()),
+    link: z.string().url(),
+    github: z.string().url().optional(),
+    image: z.string().url(),
+    alt: z.string().optional(),
+    featured: z.boolean().optional(),
+    status: z.enum(['completed', 'in-progress', 'archived']).optional(),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
   writeups: writeupCollection,
+  projects: projectCollection,
 };

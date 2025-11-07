@@ -1,9 +1,9 @@
 ---
-title: "Network Hacking I - Week 2 Lab - SEC 450 - Liam Dale"
+title: "Network Hacking I - SEC 450"
 pubDate: "2025-10-07"
 description: "Exploiting authentication bypass, RCE, and privilege escalation vulnerabilities in network services"
 category: lab
-image: "/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_6_img_2.png"
+image: "/writeups/network-hacking-i-lab-sec-450/page_6_img_2.png"
 tags: 
     - cybersecurity
     - lab
@@ -27,7 +27,7 @@ A service [libssh 0.8.1] being hosted on the server primo.ethicalhacking.academy
 1. After an initial nmap service scan on the host, libssh 0.8.1 was identified as a service of interest.
 2. Searching online reveals libssh 0.8.1 to have a known exploit, CVE-2018-10933.
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_2_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_2_img_1.png)
 
 3. Searching up the CVE reveals python code which could be used to abuse the exploit.
 4. Upon downloading the script and setting up the environment, I provided the IP address of the server and the libssh port and ran the script, immediately getting shell.
@@ -39,9 +39,9 @@ Steps from here will rank from usefulness:
 2. Switch to equivalent software like OpenSSH
 3. Limit exposure & surface area with firewalls, ACLs or a host-based firewall like iptables or ufw [port 10022]
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_3_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_3_img_1.png)
 
-![Image 2](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_3_img_2.png)
+![Image 2](/writeups/network-hacking-i-lab-sec-450/page_3_img_2.png)
 
 ## References
 
@@ -61,31 +61,31 @@ A webservice being hosted on oldschool.ethicalhacking.academy was found to be vu
 1. After an initial nmap service scan on the host, the three webservers were of interest to investigate.
 2. Visiting 172.16.90.125:8080 revealed a phpMyAdmin server
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_4_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_4_img_1.png)
 
 3. Visiting 172.16.90.125:8080 revealed a ZABBIX server
 4. Investigating phpMyAdmin further I clicked on this button on the login page, which took me to this page.
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_5_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_5_img_1.png)
 
-![Image 2](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_5_img_2.png)
+![Image 2](/writeups/network-hacking-i-lab-sec-450/page_5_img_2.png)
 
 5. Now that I had the version number of one of the services I searched online (with the help of the prof.), which revealed CVE-2016-5734 as a potential exploit.
 6. Searching online for an exploit reveals some python code which can be used to abuse CVE-2016-5734.
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_6_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_6_img_1.png)
 
-![Image 2](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_6_img_2.png)
+![Image 2](/writeups/network-hacking-i-lab-sec-450/page_6_img_2.png)
 
-![Image 3](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_6_img_3.png)
+![Image 3](/writeups/network-hacking-i-lab-sec-450/page_6_img_3.png)
 
 7. The exploit needed credentials to work however, with some google searching I found potential phpMyAdmin default passwords.
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_7_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_7_img_1.png)
 
 8. Testing out the credentials on phpMyAdmin revealed root, root as the credentials for the server.
 
-![Image 2](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_7_img_2.png)
+![Image 2](/writeups/network-hacking-i-lab-sec-450/page_7_img_2.png)
 
 9. After downloading the python code and setting up the environment I specified the username and password of the phpMyAdmin server along with the URL to reach it and a command I would like to run, giving me indirect user access on the system.
 
@@ -115,17 +115,17 @@ A remote code execution vulnerability was discovered on sufferance.ethicalhackin
 1. Ran an initial service version scan and identified port 8161 as the vulnerable service.
 2. After porting the website to my computer, I visited it in a web browser. It prompted me for login credentials, and I tried the same sets of default credentials from the phpMyAdmin page I found earlier. admin, admin worked.
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_9_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_9_img_1.png)
 
-![Image 2](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_9_img_2.png)
+![Image 2](/writeups/network-hacking-i-lab-sec-450/page_9_img_2.png)
 
 3. After clicking around the site, I eventually found an information page which contained the version number of the service.
 4. Now with the version number, I searched online and found a matching CVE for RCE: CVE-2023-46604.
 5. I then searched online for an exploit with the query CVE-2023-46604 poc github and stumbled upon a go script which I could use to exploit the system with.
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_10_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_10_img_1.png)
 
-![Image 2](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_10_img_2.png)
+![Image 2](/writeups/network-hacking-i-lab-sec-450/page_10_img_2.png)
 
 6. After cloning the repo, I followed the steps in the README.md
 7. I ran a python http server to serve the payload xml file.
@@ -133,11 +133,11 @@ A remote code execution vulnerability was discovered on sufferance.ethicalhackin
 9. I then edited the payload to match my attack boxes IP address
 10. Then I ran the command to start the go script with my variables filled out:
 
-![Image 1](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_11_img_1.png)
+![Image 1](/writeups/network-hacking-i-lab-sec-450/page_11_img_1.png)
 
 11. After running the script my netcat listener caught an open connection and started a dumb shell:
 
-![Image 2](/writeups/network-hacking-i-week-2-lab-sec-450-liam-dale/page_11_img_2.png)
+![Image 2](/writeups/network-hacking-i-lab-sec-450/page_11_img_2.png)
 
 ## Remediation Steps
 

@@ -1,9 +1,9 @@
 ---
-title: "Web Hacking II - Week 5 Lab - SEC 450 - Liam Dale"
+title: "Web Hacking II - SEC 450"
 pubDate: "2025-10-28"
 description: "Advanced web fuzzing techniques and automated vault cracking with custom Python tooling"
 category: lab
-image: "/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_28_img_1.png"
+image: "/writeups/web-hacking-ii-sec-450/page_28_img_1.png"
 tags: 
     - cybersecurity
     - lab
@@ -19,7 +19,7 @@ This writeup covers my most challenging web security lab from Bellevue College -
 ### Steps To Complete
 1. Fuzz for VHOSTS using wordlist provided, this method of fuzzing is less ideal for real world attacks since the DNS entries for VHOSTS will not match `<SUBDOMAIN>.<DOMAIN>.<TOP-LEVEL DOMAIN>`
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_2_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_2_img_1.png)
 
 ## forbidden.ethicalhacking.academy
 
@@ -27,32 +27,32 @@ This writeup covers my most challenging web security lab from Bellevue College -
 1. Fuzz, find out 403, fuzz again for 200 status code, using found 403 word.
 
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_3_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_3_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_4_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_4_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_5_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_5_img_1.png)
 
-![Image 2](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_5_img_2.png)
+![Image 2](/writeups/web-hacking-ii-sec-450/page_5_img_2.png)
 
 ## guardian.ethicalhacking.academy
 
 ### Steps To Complete
 1. Fuzz, refine search, (remove responses with size of 265) fuzz again.
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_6_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_6_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_7_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_7_img_1.png)
 
-![Image 2](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_7_img_2.png)
+![Image 2](/writeups/web-hacking-ii-sec-450/page_7_img_2.png)
 
 ## labyrinth.ethicalhacking.academy
 
 ### Steps To Complete
 1. Fuzz, use -v flag, fuzz again, apply the -fr wrong
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_8_img_1.png)
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_9_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_8_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_9_img_1.png)
 
 ## headcanon.ethicalhacking.academy
 
@@ -62,11 +62,11 @@ This writeup covers my most challenging web security lab from Bellevue College -
 3. Fuzz the X-Auth-Passphrase=FUZZ
 
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_10_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_10_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_11_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_11_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_12_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_12_img_1.png)
 
 ## palindromeda.ethicalhacking.academy
 
@@ -74,13 +74,13 @@ This writeup covers my most challenging web security lab from Bellevue College -
 1. Use the hints to deduce that you should try palindromeda in reverse!
 
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_13_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_13_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_14_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_14_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_15_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_15_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_16_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_16_img_1.png)
 
 ## vault.ethicalhacking.academy
 
@@ -88,40 +88,40 @@ This writeup covers my most challenging web security lab from Bellevue College -
 1. Solve riddle to determine expected route of attack.
 
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_17_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_17_img_1.png)
 
 2. Forbidden (325) -> Guardian (505) -> Labyrinth (361) -> Headcanon (531) -> Palindromeda (509)
 3. Turn partial keys into words using fuzzing and filtering for specific error codes.
 4. Save generated key_fragment cookies when visiting in a browser or using BurpSuite.
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_18_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_18_img_1.png)
 
 5. Repeat previous steps…
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_19_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_19_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_20_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_20_img_1.png)
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_21_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_21_img_1.png)
 
 6. Find Bronze Flag with three cookies!
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_22_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_22_img_1.png)
 
 {"flag":"br0nz3_f1r3"}
 
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_23_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_23_img_1.png)
 
 7. Find Silver Flag with four cookies!
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_24_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_24_img_1.png)
 
 {"flag":"51lv3r_f1r3"}
 
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_25_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_25_img_1.png)
 
 8. Find Gold flag with five cookies!
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_26_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_26_img_1.png)
 
 {"flag":"g0ld_v4ult_0p3n"}
 
@@ -131,7 +131,7 @@ This writeup covers my most challenging web security lab from Bellevue College -
 1. Using BurpSuite it can be intuited that certain keywords seem to set the cookies, it's just a matter of fuzzing for the right ones.
 
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_27_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_27_img_1.png)
 ### MINI STEP BY STEP FOR INTRUDER ATTACK ON BURPSUITE:
 1. Capture and send over to intruder a valid /key_vault/ request, set /key_vault/FUZZ and load wordlist.
 2. Setup a Grep – Extract for Set-Cookie: key_fragment to generate a sortable table of available cookies.
@@ -140,7 +140,7 @@ This writeup covers my most challenging web security lab from Bellevue College -
 
 2. Using this knowledge, we can devise a script to attack vault.ethicalhacking.academy for the right set of words. Additionally, since we can programmatically figure out the passwords to any students account using a simple md5 hash and filter we can create a --user flag in the script to attack any student's vault.
 
-![Image 1](/writeups/web-hacking-ii-week-5-lab-sec-450-liam-dale/page_28_img_1.png)
+![Image 1](/writeups/web-hacking-ii-sec-450/page_28_img_1.png)
 
 ### Prompt
 I will be candid I used an LLM to create this script. Here's the prompt I used:

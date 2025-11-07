@@ -23,13 +23,13 @@ const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
         </h1>
         <a 
           href="/" 
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors duration-200 text-sm font-medium"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-skin-accent-bg hover:bg-skin-accent hover:text-skin-bg transition-colors duration-200 text-sm font-medium text-skin-accent"
         >
           <i class="fa-solid fa-house"></i>
           Home
         </a>
       </div>
-      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+      <p class="text-lg text-skin-muted max-w-2xl">
         Thoughts on cybersecurity, technical tutorials, and insights from my journey in information security.
       </p>
     </header>
@@ -37,7 +37,7 @@ const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
     <!-- Posts Grid -->
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {posts.map((post: BlogPost) => (
-        <article class="group bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        <article class="group bg-skin-bg rounded-xl border border-skin-muted/20 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-skin-accent/50">
           {post.data.image && (
             <div class="aspect-video overflow-hidden">
               <img
@@ -49,19 +49,19 @@ const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
           )}
           
           <div class="p-6">
-            <h2 class="text-xl font-semibold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h2 class="text-xl font-semibold mb-3 text-skin-heading group-hover:text-skin-accent transition-colors">
               <a href={`/blog/${post.slug}/`} class="stretched-link">
                 {post.data.title}
               </a>
             </h2>
             
             {post.data.description && (
-              <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+              <p class="text-skin-muted mb-4 line-clamp-3">
                 {post.data.description}
               </p>
             )}
             
-            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-500">
+            <div class="flex items-center justify-between text-sm text-skin-muted">
               <time datetime={post.data.pubDate.toISOString()}>
                 {post.data.pubDate.toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -71,7 +71,7 @@ const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
               </time>
               
               {post.data.category && (
-                <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-medium">
+                <span class="px-2 py-1 bg-skin-accent-bg text-skin-accent rounded-full text-xs font-medium">
                   {post.data.category}
                 </span>
               )}
@@ -80,12 +80,12 @@ const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
             {post.data.tags && post.data.tags.length > 0 && (
               <div class="flex flex-wrap gap-2 mt-4">
                 {post.data.tags.slice(0, 3).map((tag: string) => (
-                  <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs">
+                  <span class="px-2 py-1 bg-skin-accent-bg text-skin-text rounded text-xs">
                     #{tag}
                   </span>
                 ))}
                 {post.data.tags.length > 3 && (
-                  <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded text-xs">
+                  <span class="px-2 py-1 bg-skin-accent-bg text-skin-muted rounded text-xs">
                     +{post.data.tags.length - 3} more
                   </span>
                 )}
@@ -98,9 +98,9 @@ const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 
     {posts.length === 0 && (
       <div class="text-center py-12">
-        <i class="fa-solid fa-file-lines text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
-        <h3 class="text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">No blog posts yet</h3>
-        <p class="text-gray-500 dark:text-gray-500">Check back soon for new content!</p>
+        <i class="fa-solid fa-file-lines text-6xl text-skin-muted mb-4"></i>
+        <h3 class="text-xl font-semibold text-skin-heading mb-2">No blog posts yet</h3>
+        <p class="text-skin-muted">Check back soon for new content!</p>
       </div>
     )}
 
@@ -108,7 +108,7 @@ const total = Math.ceil(allPosts.length / POSTS_PER_PAGE);
       <nav class="mt-12 flex justify-center">
         <a 
           href="/blog/page/2/" 
-          class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-skin-accent hover:bg-skin-accent/80 text-skin-bg rounded-lg font-medium transition-colors duration-200"
         >
           Load More Posts
           <i class="fa-solid fa-arrow-right"></i>

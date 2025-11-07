@@ -1,9 +1,9 @@
 ---
-title: "Network Hacking II - Week 3 Lab - SEC 450 - Liam Dale"
+title: "Network Hacking II - SEC 450"
 pubDate: "2025-10-14"
 description: "Advanced network attacks including sudo privilege escalation, OSPF poisoning, and Docker container escapes"
 category: lab
-image: "/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_8_img_1.png"
+image: "/writeups/network-hacking-ii-lab-sec-450/page_8_img_1.png"
 tags: 
     - cybersecurity
     - lab
@@ -29,9 +29,9 @@ There was a misconfiguration discovered on the hA Jupyter Notebook server, where
 4. Craft a payload to create a root owned accessible and executable bash binary:
 5. Use tcpdump to execute the script as root, generate traffic and wait so tcpdump executes:
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_2_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_2_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_2_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_2_img_2.png)
 
 6. Run the new /bin/rootbash binary to enter a 'root' shell:
 7. Spawn a new bash shell using 'fake root' privileges to enter a shell with actual root privileges:
@@ -48,13 +48,13 @@ Steps from here will rank from usefulness:
 https://cwe.mitre.org/data/definitions/250.html
 https://gtfobins.github.io/gtfobins/tcpdump/
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_3_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_3_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_3_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_3_img_2.png)
 
-![Image 3](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_3_img_3.png)
+![Image 3](/writeups/network-hacking-ii-lab-sec-450/page_3_img_3.png)
 
-![Image 4](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_3_img_4.png)
+![Image 4](/writeups/network-hacking-ii-lab-sec-450/page_3_img_4.png)
 
 ## Credential stealing possible from Health Check API server on hA (10.100.0.10) – CRITICAL
 CWE-319, CVSS3.0 9.8:AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
@@ -71,9 +71,9 @@ It was discovered that on hA users using tcpdump can listen in to our health che
 4. Listen in on port 5000 for communication using tcpdump as root:
 5. View plaintext credentials in communication to API server:
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_4_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_4_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_4_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_4_img_2.png)
 
 6. Login as root using stolen credentials:
 7. Connect to rA using the SSH keys within /root/.ssh and read the flag:
@@ -89,11 +89,11 @@ Steps from here will rank from usefulness:
 
 https://cwe.mitre.org/data/definitions/319.html
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_5_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_5_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_5_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_5_img_2.png)
 
-![Image 3](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_5_img_3.png)
+![Image 3](/writeups/network-hacking-ii-lab-sec-450/page_5_img_3.png)
 
 ## OSPF poisoning attack possible on 10.200.0.0/24 subnet – CRITICAL
 CWE-940, CVSS3.0 9.8:AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
@@ -108,26 +108,26 @@ There was a vulnerability discovered in the OSPF network on 10.200.0.0/24, an at
 2. Establish a connection with the OSPF network:
 3. Create a listener using tcpdump on port 80 (the traffic we're trying to intercept):
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_6_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_6_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_6_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_6_img_2.png)
 
-![Image 3](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_6_img_3.png)
+![Image 3](/writeups/network-hacking-ii-lab-sec-450/page_6_img_3.png)
 
 4. Create 'fake' interfaces that appear to connect directly to the subnets we're targeting:
 5. Advertise those routes using OSPF:
 6. Wait and then read our capture for the SSH keys:
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_7_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_7_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_7_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_7_img_2.png)
 
 7. Save and use the SSH keys to login to root on any device on the 10.0.0.0/8 network:
 8. Login to netadmin @ 10.200.0.10 and read the key:
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_8_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_8_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_8_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_8_img_2.png)
 
 ## Remediation Steps
 
@@ -147,7 +147,7 @@ CWE-250, CVSS3.0 9.8:AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
 
 There was a vulnerability detected on the netadmin container located at 10.200.0.10 in the 10.0.0.0/8 network, which when abused allows a docker container to escape its environment and attack the host machine.
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_9_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_9_img_1.png)
 
 ## Steps To Reproduce
 
@@ -158,20 +158,20 @@ Because we have the CAP_SYS_ADMIN capability we're allowed a lot of control over
 2. View the disk devices directly connected to the container using lsblk:
 3. Make a directory and mount the device in its entirety to that folder:
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_10_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_10_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_10_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_10_img_2.png)
 
 4. View the contents and reveal the host operating system:
 5. Find the flag in the /root/ folder of the host operating system:
 
-![Image 1](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_11_img_1.png)
+![Image 1](/writeups/network-hacking-ii-lab-sec-450/page_11_img_1.png)
 
-![Image 2](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_11_img_2.png)
+![Image 2](/writeups/network-hacking-ii-lab-sec-450/page_11_img_2.png)
 
-![Image 3](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_11_img_3.png)
+![Image 3](/writeups/network-hacking-ii-lab-sec-450/page_11_img_3.png)
 
-![Image 4](/writeups/network-hacking-ii-week-3-lab-sec-450-liam-dale/page_11_img_4.png)
+![Image 4](/writeups/network-hacking-ii-lab-sec-450/page_11_img_4.png)
 
 ## Remediation Steps
 

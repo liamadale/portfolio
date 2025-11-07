@@ -21,7 +21,7 @@
   }
 
   .blog-section {
-    @apply scroll-mt-16 mb-24 lg:scroll-mt-24 lg:mb-36;
+    @apply scroll-mt-16 mb-24 lg:scroll-mt-24 lg:mb-24;
   }
 
   .blog-heading {

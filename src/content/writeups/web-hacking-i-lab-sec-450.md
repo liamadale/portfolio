@@ -1,9 +1,9 @@
 ---
-title: "Web Hacking I - Week 4 Lab - SEC 450 - Liam Dale"
+title: "Web Hacking I - SEC 450"
 pubDate: "2025-10-21"
 description: "Web application security testing covering SQL injection, XSS, file upload attacks, and brute force vulnerabilities"
 category: lab
-image: "/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_12_img_1.png"
+image: "/writeups/web-hacking-i-lab-sec-450/page_12_img_1.png"
 tags: 
     - cybersecurity
     - lab
@@ -29,21 +29,21 @@ There was a major issue discovered on the web1 website hosted by ethicalhacking.
 3. Initialize a scan using wfuzz to scan for files that exist on the webserver:
 4. Initialize a scan using wfuzz to scan for directories that exist on the webserver:
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_2_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_2_img_1.png)
 
 5. Visit web1lab.ethicalhacking.academy/container/[CONTAINER_ID]/setup.php:
 6. Use the Create / Reset Database button
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_3_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_3_img_1.png)
 
-![Image 2](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_3_img_2.png)
+![Image 2](/writeups/web-hacking-i-lab-sec-450/page_3_img_2.png)
 
 7. With SecLists installed use the: Discovery/Web-Content/quickhits.txt wordlist.
 8. Use wfuzz to scan the discovered config directory:
 9. Visit web1lab.ethicalhacking.academy/container/[CONTAINER_ID]/config/config.inc.php.bak in a web browser to download the file.
 10. Open config.inc.php.bak in a text editor:
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_4_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_4_img_1.png)
 
 ## Remediation Steps
 
@@ -58,7 +58,7 @@ Steps from here will rank from usefulness:
 https://owasp.org/Top10/A05_2021-Security_Misconfiguration/
 https://cwe.mitre.org/data/definitions/200.html
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_5_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_5_img_1.png)
 
 ## Command injection attack possible on web1.ethicalhacking.academy/container/x/vulnerabilities/exec – CRITICAL
 OWASP A03:2021
@@ -74,7 +74,7 @@ A command injection vulnerability was discovered on the web1 website hosted on e
 2. Login using valid credentials (ex. admin:password)
 3. Using the ip form on the website type: 127.0.0.1|whoami
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_7_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_7_img_1.png)
 
 ## Remediation Steps
 
@@ -102,7 +102,7 @@ A file inclusion attack is possible on the web1 webserver at ethicalhacking.acad
 2. Login using default credentials admin:password
 3. Type ?page=..\/..\/..\/etc/passwd at the end of the url to display the /etc/passwd file on the machine.
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_9_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_9_img_1.png)
 
 ## Remediation Steps
 
@@ -132,15 +132,15 @@ A file upload attack is possible on the web1 webserver running at ethicalhacking
 4. Using a curl command send over the generated file with the set to type=image/jpeg in the file upload field to trick the webserver into accepting the shell.php file.
 5. The response from the webserver confirms it's been uploaded successfully.
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_10_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_10_img_1.png)
 
-![Image 2](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_10_img_2.png)
+![Image 2](/writeups/web-hacking-i-lab-sec-450/page_10_img_2.png)
 
 6. Visiting URL/hackable/uploads/shell.php?cmd=cat /etc/passwd in a browser reveals our script has been successfully uploaded and we now have a direct connection to the webserver's console.
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_11_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_11_img_1.png)
 
-![Image 2](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_11_img_2.png)
+![Image 2](/writeups/web-hacking-i-lab-sec-450/page_11_img_2.png)
 
 ## Remediation Steps
 
@@ -170,7 +170,7 @@ There is an SQL Injection attack possible on the web1 webserver on ethicalhackin
 4. Using a curl request to the /sqli/session-input.php file, specify an id=1' UNION SELECT user,password FROM users#
 5. Visit URL/vulnerabilities/sqli to view the dumped user & password table.
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_12_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_12_img_1.png)
 
 ## Remediation Steps
 
@@ -185,7 +185,7 @@ https://github.com/doctrine/orm
 https://owasp.org/Top10/A03_2021-Injection/
 https://cwe.mitre.org/data/definitions/89.html
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_13_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_13_img_1.png)
 
 ## Stored XSS attack possible on web1.ethicalhacking.academy/container/x/vulnerabilities/xss_s – HIGH
 OWASP A03:2021
@@ -203,7 +203,7 @@ There is a stored XSS attack possible on the web1 webserver on ethicalhacking.ac
 4. Using a curl request specify a txtName=<img src=x onerror=alert('your_message_here')>&mtxMessage=Message&btnSign=Sign Guestbook
 5. Visit URL/xss_s to have the script execute on your web browser.
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_14_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_14_img_1.png)
 
 ## Remediation Steps
 
@@ -218,7 +218,7 @@ https://www.php.net/manual/en/function.htmlspecialchars.php
 https://owasp.org/Top10/A03_2021-Injection/
 https://cwe.mitre.org/data/definitions/79.html
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_15_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_15_img_1.png)
 
 ## Reflected XSS attack possible on web1.ethicalhacking.academy/container/x/vulnerabilities/xss_r – MEDIUM
 OWASP A03:2021
@@ -234,7 +234,7 @@ There is a reflected XSS vulnerability discovered on the web1 webserver at ethic
 2. Login using default credentials admin:password
 3. To view the attack navigate to web1.ethicalhacking.academy/container/x/vulnerabilities/xss_r/?name=%3Cimg%20src%3Dx%20onerror%3Dalert%281%29%3E
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_17_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_17_img_1.png)
 
 ## Remediation Steps
 
@@ -266,11 +266,11 @@ A brute forcing attack is possible on the web1 webserver at ethicalhacking.acade
 5. To properly filter out results in our brute force attack we need to find out how many characters differ between successful and failed attempts, using curl piped into wc -c, we find that successful attempts have around ~3401 chars while failed attempts have 3345 exactly.
 6. Using wfuzz, provide necessary cookies and wordlists, along with our filter --hh 3345 and our FUZZ'd URL (hammering the server with 200 threads is not required)
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_18_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_18_img_1.png)
 
-![Image 1](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_19_img_1.png)
+![Image 1](/writeups/web-hacking-i-lab-sec-450/page_19_img_1.png)
 
-![Image 2](/writeups/web-hacking-i-week-4-lab-sec-450-liam-dale/page_19_img_2.png)
+![Image 2](/writeups/web-hacking-i-lab-sec-450/page_19_img_2.png)
 
 ## Remediation Steps
 

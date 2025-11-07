@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+type ProjectPost = CollectionEntry<'projects'>;
+
+const allProjects: ProjectPost[] = (await getCollection('projects')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Projects - Liam Dale">
+  <main class="max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 py-12">
+    <!-- Header with Home Button -->
+    <header class="mb-12">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-bold mb-4">
+          Projects
+        </h1>
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-skin-accent-bg hover:bg-skin-accent hover:text-skin-bg transition-colors duration-200 text-sm font-medium text-skin-accent"
+        >
+          <i class="fa-solid fa-house"></i>
+          Home
+        </a>
+      </div>
+      <p class="text-lg text-skin-muted max-w-2xl">
+        A collection of web applications, tools, and technical projects showcasing my development skills and problem-solving approach.
+      </p>
+    </header>
+
+    <!-- Projects Grid -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {allProjects.map((project: ProjectPost) => (
+        <article class="group bg-skin-bg rounded-xl border border-skin-muted/20 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-skin-accent/50">
+          {project.data.image && (
+            <div class="aspect-video overflow-hidden">
+              <img
+                src={project.data.image}
+                alt={project.data.alt ?? project.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          )}
+          
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="text-xl font-semibold text-skin-heading group-hover:text-skin-accent transition-colors">
+                <a href={project.data.link} target="_blank" rel="noopener noreferrer" class="stretched-link">
+                  {project.data.title}
+                </a>
+              </h2>
+              {project.data.status && (
+                <span class="px-2 py-1 bg-skin-accent-bg text-skin-accent rounded-full text-xs font-medium">
+                  {project.data.status === 'in-progress' ? 'In Progress' : 
+                   project.data.status === 'completed' ? 'Completed' : 'Archived'}
+                </span>
+              )}
+            </div>
+            
+            <p class="text-skin-muted mb-4 line-clamp-3">
+              {project.data.description}
+            </p>
+            
+            <div class="flex items-center justify-between text-sm text-skin-muted mb-4">
+              <time datetime={project.data.pubDate.toISOString()}>
+                {project.data.pubDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+              
+              {project.data.github && (
+                <a 
+                  href={project.data.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-skin-accent hover:text-skin-accent/80 transition-colors"
+                >
+                  <i class="fa-brands fa-github"></i>
+                  <span class="text-xs">GitHub</span>
+                </a>
+              )}
+            </div>
+            
+            {project.data.tech && project.data.tech.length > 0 && (
+              <div class="flex flex-wrap gap-2">
+                {project.data.tech.map((tech: string) => (
+                  <span class="px-2 py-1 bg-skin-accent-bg text-skin-accent rounded text-xs font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {allProjects.length === 0 && (
+      <div class="text-center py-12">
+        <i class="fa-solid fa-code text-6xl text-skin-muted mb-4"></i>
+        <h3 class="text-xl font-semibold text-skin-heading mb-2">No projects yet</h3>
+        <p class="text-skin-muted">Check back soon for new projects!</p>
+      </div>
+    )}
+  </main>
+</Layout>

@@ -1,27 +1,14 @@
 ---
-const projects = [
-  {
-    title: "Portfolio Website",
-    description: "A personal portfolio website showcasing my projects and skills, built with Astro.",
-    tech: ["Astro", "HTML", "CSS", "JavaScript"],
-    link: "https://github.com/liamadale/portfolio",
-    image: "https://github.com/liamadale/portfolio/blob/main/portfolio%20preview.png?raw=true",
-  },
-  {
-    title: "bcinfosec.club",
-    description: "A website for the Bellevue College InfoSec Club, featuring club information, events, and resources.",
-    tech: ["Hugo", "HTML", "CSS", "JavaScript"],
-    link: "https://github.com/bellevuecollegeinfosec/bcinfosec.club/tree/main",
-    image: "https://github.com/bellevuecollegeinfosec/bcinfosec.club/blob/main/bcinfosecscreenshot.png?raw=true",
-  },
-  {
-    title: "Photo Repository React App",
-    description: "A photo repository app built with React and Flask, allowing users to upload and manage their photos.",
-    tech: ["React", "Flask", "Python", "S3", "EC2", "AWS"],
-    link: "https://github.com/liamadale/photo-repository-react-app",
-    image: "https://github.com/liamadale/photo-repository-react-app/raw/main/imgs/photo-repo-demo.png",
-  },
-];
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+type ProjectPost = CollectionEntry<'projects'>;
+
+const allProjects: ProjectPost[] = (await getCollection('projects')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Show only featured projects or first 3 projects for homepage
+const projects = allProjects.filter(p => p.data.featured).slice(0, 3);
 ---
 
 <section id="projects" class="projects-section">
@@ -31,10 +18,10 @@ const projects = [
     {projects.map((project) => (
       <div class="group project-entry">
         <div class="project-image">
-          <a href={project.link} target="_blank" rel="noopener noreferrer">
+          <a href={project.data.link} target="_blank" rel="noopener noreferrer">
             <img
-              src={project.image}
-              alt={`Screenshot of ${project.title}`}
+              src={project.data.image}
+              alt={project.data.alt ?? `Screenshot of ${project.data.title}`}
               class="rounded-md object-cover w-full aspect-video border"
               style="border-color: rgba(var(--color-muted-rgb), 0.3); border-width: 1px;"
             />
@@ -43,10 +30,10 @@ const projects = [
 
         <div class="project-details">
           <h3>
-            <a href={project.link} target="_blank" class="project-title">
+            <a href={project.data.link} target="_blank" class="project-title">
               <span class="project-clickable"></span>
               <span>
-                {project.title}
+                {project.data.title}
                 <span class="project-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"  class="project-icon-svg group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none">
                     <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
@@ -56,10 +43,10 @@ const projects = [
             </a>
           </h3>
 
-          <p class="project-description">{project.description}</p>
+          <p class="project-description">{project.data.description}</p>
 
           <ul class="project-tech-list" aria-label="Technologies used:">
-            {project.tech.map((t) => (
+            {project.data.tech.map((t) => (
               <li><div class="project-tech">{t}</div></li>
             ))}
           </ul>
@@ -67,4 +54,8 @@ const projects = [
       </div>
     ))}
   </div>
+
+  <a href="/projects" class="blog-footer-link">
+    View all projects →
+  </a>
 </section>

@@ -1,6 +1,6 @@
 @layer utilities {
   .about-section {
-    @apply scroll-mt-16 mb-16 md:mb-24 lg:mb-36 lg:scroll-mt-24;
+    @apply scroll-mt-16 mb-16 md:mb-24 lg:mb-24 lg:scroll-mt-24;
   }
 
   .about-heading {
