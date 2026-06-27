@@ -1,48 +1,39 @@
 ---
 const jobs = [
   {
+    company: "PISCES International",
+    title: "SOC Analyst",
+    timeframe: "Jan 2026 — Jun 2026",
+    url: "https://pisces-intl.org/",
+    description:
+      "Gained operational experience analyzing real-time security events collected from critical infrastructure organizations. Built pisces-scripts, a custom tooling suite leveraging Kibana, OpenSearch Dashboards, and the ElasticSearch/OpenSearch APIs to streamline SOC workflows and automate event triage.",
+    tech: ["Kibana", "OpenSearch", "ElasticSearch", "Python", "SIEM", "Bash", "REST APIs"],
+  },
+  {
     company: "Bellevue College InfoSec Club",
     title: "President",
-    timeframe: "Sep 2024 — Present",
+    timeframe: "Sep 2024 — Mar 2026",
     url: "https://bcinfosec.club",
     description:
-      "Lead weekly cybersecurity labs and workshops for students. Built and maintain a secure lab environment allowing students to access Kali Linux and vulnerable machines on and off-campus. Developed the club’s website using Hugo and the Doks theme.",
+      "Led weekly hands-on labs for 20+ members covering penetration testing, network exploitation, and privilege escalation. Competed in PRCCDC 2025, defending enterprise networks against professional red team attacks. Built a virtualized lab using Proxmox/Ludus for 30+ students and produced educational YouTube content on real-world exploits.",
     tech: ["Hugo", "HTML/CSS", "Linux", "Cybersecurity", "Homelab", "Ludus", "Proxmox", "Leadership", "Teaching"],
   },
   {
     company: "Dutch Bros Coffee",
     title: "Barista",
-    timeframe: "Mar 2024 — Present",
+    timeframe: "Mar 2024 — May 2026",
     url: "https://www.dutchbros.com/",
     description:
       "Prepared drinks, provided customer service in a fast-paced environment, and supported team operations.",
     tech: [],
   },
   {
-    company: "Beans & Brews",
-    title: "Barista",
-    timeframe: "Mar 2023 — Jul 2023",
-    url: "https://beansandbrews.com/",
+    company: "Various",
+    title: "Prior Roles",
+    timeframe: "Jan 2020 — Jul 2023",
+    url: "",
     description:
-      "Served coffee and maintained store operations while developing strong communication and multitasking skills.",
-    tech: [],
-  },
-  {
-    company: "Littell House Construction LLC",
-    title: "Apprentice Carpenter",
-    timeframe: "Sep 2022 — Nov 2022",
-    url: "https://littellhouseconstruction.com/",
-    description:
-      "Assisted in residential construction and carpentry projects, gaining hands-on experience with tools and teamwork.",
-    tech: [],
-  },
-  {
-    company: "Target",
-    title: "Sales Associate",
-    timeframe: "Jan 2020 — Sep 2021",
-    url: "https://www.target.com/",
-    description:
-      "Worked on the sales floor, helped customers with purchases, and kept merchandise organized and stocked.",
+      "Sales Associate at Target (2020–2021), Apprentice Carpenter at Littell House Construction (2022), and Barista at Beans & Brews (2023). Developed customer service, teamwork, and hands-on trade skills across retail, construction, and food service.",
     tech: [],
   },
   {
@@ -89,9 +80,15 @@ const education = [
           </time>
           <div class="job-details">
             <h3 class="job-title">
-              <a href={job.url} target="_blank" rel="noopener noreferrer" class="job-link group">
-                {job.title} · <span class="job-company">{job.company}</span>
-              </a>
+              {job.url ? (
+                <a href={job.url} target="_blank" rel="noopener noreferrer" class="job-link group">
+                  {job.title} · <span class="job-company">{job.company}</span>
+                </a>
+              ) : (
+                <span class="job-link">
+                  {job.title} · <span class="job-company">{job.company}</span>
+                </span>
+              )}
             </h3>
             <p class="job-description">{job.description}</p>
             <ul class="job-tech-list">

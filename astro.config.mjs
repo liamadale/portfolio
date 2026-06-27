@@ -8,6 +8,14 @@ export default defineConfig({
   integrations: [
     tailwind(),
   ],
+  vite: {
+    server: {
+      hmr: {
+        host: 'localhost',
+        port: 4321,
+      },
+    },
+  },
   markdown: {
     smartypants: false,
     remarkPlugins: [remarkImageShortcode],

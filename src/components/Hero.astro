@@ -14,7 +14,7 @@ const navItems = [
     <div class="hero-content">
       {/* Main title and subtitle */}
       <h1 class="hero-title">Liam Dale</h1>
-      <h2 class="hero-subtitle">Cybersecurity Student & Club Leader</h2>
+      <h2 class="hero-subtitle">Cybersecurity Student & SOC Analyst</h2>
       <p class="hero-description">
         Building hands-on labs, leading student workshops, and preparing for a career in SOC analysis.
       </p>
@@ -62,3 +62,75 @@ const navItems = [
     </ul>
   </footer>
 </aside>
+
+<script>
+  let halflifeAudio: HTMLAudioElement | undefined;
+
+  function getInitialTheme() {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved;
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+
+  function setTheme(theme: string) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    updateFavicon(theme);
+  }
+
+  const themes = ["dark", "light", "future"];
+
+  function toggleTheme() {
+    const current = localStorage.getItem("theme") || "dark";
+    const currentIndex = themes.indexOf(current);
+    const next = themes[(currentIndex + 1) % themes.length];
+    setTheme(next);
+  }
+
+  function updateFavicon(theme: string) {
+    const favicon = document.getElementById("favicon") as HTMLLinkElement | null;
+    if (favicon) favicon.href = `/favicon/${theme}/favicon.ico`;
+  }
+
+  function activateHalfLifeTheme() {
+    if (!halflifeAudio || halflifeAudio.ended || halflifeAudio.paused) {
+      halflifeAudio = new Audio('/audio/valve-theme.mp3');
+      halflifeAudio.volume = 0.2;
+      halflifeAudio.play();
+    }
+    setTheme('halflife');
+  }
+
+  (window as any).activateHalfLifeTheme = activateHalfLifeTheme;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTheme(getInitialTheme());
+    document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
+  });
+</script>
+
+<script>
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll<HTMLElement>(".nav-link");
+
+  const navLinkMap = new Map<string, HTMLElement>();
+  navLinks.forEach((link) => {
+    const sectionId = (link as HTMLElement).dataset.section;
+    if (sectionId) navLinkMap.set(sectionId, link);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const navLink = navLinkMap.get(entry.target.id);
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => link.classList.remove("active"));
+          navLink?.classList.add("active");
+        }
+      });
+    },
+    { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+</script>
