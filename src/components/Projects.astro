@@ -22,6 +22,7 @@ const projects = allProjects.filter(p => p.data.featured).slice(0, 3);
             <img
               src={project.data.image}
               alt={project.data.alt ?? `Screenshot of ${project.data.title}`}
+              loading="lazy"
               class="rounded-md object-cover w-full aspect-video border"
               style="border-color: rgba(var(--color-muted-rgb), 0.3); border-width: 1px;"
             />
@@ -30,7 +31,7 @@ const projects = allProjects.filter(p => p.data.featured).slice(0, 3);
 
         <div class="project-details">
           <h3>
-            <a href={project.data.link} target="_blank" class="project-title">
+            <a href={project.data.link} target="_blank" rel="noopener noreferrer" class="project-title">
               <span class="project-clickable"></span>
               <span>
                 {project.data.title}
@@ -55,7 +56,7 @@ const projects = allProjects.filter(p => p.data.featured).slice(0, 3);
     ))}
   </div>
 
-  <a href="/projects" class="blog-footer-link">
+  <a href="/projects" class="section-footer-link">
     View all projects →
   </a>
 </section>

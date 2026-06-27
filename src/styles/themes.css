@@ -2,7 +2,7 @@
 
 /* Base Theme (Dark) */
 :root {
-  --font-inter: 'Inter', sans-serif;
+  --font-inter: 'Inter Variable', 'Inter', sans-serif;
 
   --color-bg: #0f172a;               /* bg-skin-bg */
   --color-text: #e2e8f0;             /* text-skin-text */
@@ -22,6 +22,7 @@
   --color-bg: #f8fafc;               /* bg-skin-bg (slate-50) */
   --color-text: #0f172a;             /* text-skin-text (slate-900) */
   --color-muted: #64748b;            /* text-skin-muted (slate-500) */
+  --color-muted-rgb: 100,116,139;
   --color-accent: #0ea5e9;           /* text-skin-accent (sky-400) */
   --color-accent-bg: rgba(14, 165, 233, 0.1); /* bg-skin-accent-bg */
   --color-heading: #334155;          /* text-skin-heading (slate-700) */
@@ -36,6 +37,7 @@
   --color-bg: #0a0c10;
   --color-text: #d1d5db;
   --color-muted: #6b7280;
+  --color-muted-rgb: 107,114,128;
   --color-accent: #8b5cf6;
   --color-accent-bg: rgba(139, 92, 246, 0.1);
   --color-heading: #9ca3af;

@@ -22,8 +22,9 @@
 
 .nav-link.active .nav-text {
   color: var(--color-accent);
-}/* Util
-ity classes for enhanced listing pages */
+}
+
+/* Utility classes for enhanced listing pages */
 .stretched-link::after {
   position: absolute;
   top: 0;
@@ -32,16 +33,4 @@ ity classes for enhanced listing pages */
   left: 0;
   z-index: 1;
   content: "";
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* Ensure parent containers have relative positioning for stretched links */
-article {
-  position: relative;
 }

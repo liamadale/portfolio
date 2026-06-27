@@ -3,6 +3,7 @@
 const { title = "Liam Dale", 
 description = "I'm working towards a career in cybersecurity. Focused on SOC analyst positions. "
 } = Astro.props;
+import "@fontsource-variable/inter";
 import "../styles/global.css";
 ---
 
@@ -16,10 +17,6 @@ import "../styles/global.css";
     
     <!-- Default favicon (dark as fallback) -->
     <link id="favicon" rel="icon" href="/favicon/dark/favicon.ico" />
-
-    <!-- FONTS ARE IMPORTED HERE -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/f094ea114c.js" crossorigin="anonymous"></script>
 
     <script>
       const theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");

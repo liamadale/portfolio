@@ -1,4 +1,4 @@
-@layer utilities {
+@layer components {
   .experience-section {
     @apply mb-16 scroll-mt-16 md:mb-24 lg:mb-24 lg:scroll-mt-24;
   }
@@ -12,15 +12,12 @@
   }
 
   .job-entry {
-    @apply grid gap-4 sm:grid-cols-8 md:gap-6 relative rounded-md 
-          shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
-          transition duration-300;
+    @apply grid gap-4 sm:grid-cols-8 md:gap-6 p-4 relative rounded-md
+           transition duration-300;
 
-    /* Transparent by default */
     background-color: transparent;
     backdrop-filter: none;
     box-shadow: none;
-    padding: 1.15rem 1.15rem;
   }
 
   .job-entry:hover {

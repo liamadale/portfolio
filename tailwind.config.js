@@ -19,7 +19,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Inter Variable', 'Inter', 'sans-serif'],
       },
       typography: (theme) => ({
         skin: {

@@ -1,4 +1,4 @@
-@layer utilities {
+@layer components {
   .hero-container {
     @apply lg:sticky lg:top-0 lg:flex lg:w-full lg:flex-col lg:justify-between px-6 md:px-12 bg-transparent text-skin-text;
   }

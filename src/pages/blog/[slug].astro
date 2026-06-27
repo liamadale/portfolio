@@ -43,9 +43,10 @@ const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1]
     </div>
   </nav>
   <main class="blog-post-wrapper">
-    <h1 class="blog-post-header">{post.data.title}</h1>
+    <header class="post-header">
+      <h1 class="blog-post-header">{post.data.title}</h1>
 
-     <div class="post-meta">
+      <div class="post-meta">
         <time
           datetime={post.data.pubDate.toISOString()}
           class="post-meta-date"

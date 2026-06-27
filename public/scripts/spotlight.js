@@ -1,56 +1,61 @@
-const spotlight = document.getElementById("spotlight");
-const themeRoot = document.documentElement;
+// Skip entirely on touch/mobile devices — no mouse to follow
+if (window.matchMedia("(pointer: fine)").matches) {
+  const spotlight = document.getElementById("spotlight");
+  const themeRoot = document.documentElement;
 
-let targetX = 0;
-let targetY = 0;
-let currentX = 0;
-let currentY = 0;
-let currentAccent = "20, 184, 166"; // Fallback dark
-let currentTheme = "";
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let currentAccent = "20, 184, 166";
+  let currentTheme = "";
+  let rafId = null;
 
-document.addEventListener("mousemove", (e) => {
-  targetX = e.clientX;
-  targetY = e.clientY;
-});
+  document.addEventListener("mousemove", (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+    if (!rafId) {
+      rafId = requestAnimationFrame(animate);
+    }
+  });
 
-function hexToRgb(hex) {
-  hex = hex.replace(/^#/, "");
-  if (hex.length === 3) hex = hex.split("").map(c => c + c).join("");
-  const bigint = parseInt(hex, 16);
-  return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255].join(", ");
-}
+  function hexToRgb(hex) {
+    hex = hex.replace(/^#/, "");
+    if (hex.length === 3) hex = hex.split("").map(c => c + c).join("");
+    const bigint = parseInt(hex, 16);
+    return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255].join(", ");
+  }
 
-function updateAccentFromTheme() {
-  const theme = themeRoot.getAttribute("data-theme") || "default";
+  function updateAccentFromTheme() {
+    const theme = themeRoot.getAttribute("data-theme") || "default";
+    if (theme !== currentTheme) {
+      const accentHex = getComputedStyle(themeRoot).getPropertyValue("--color-accent").trim();
+      currentAccent = hexToRgb(accentHex);
+      currentTheme = theme;
+    }
+  }
 
-  if (theme !== currentTheme) {
-    const accentHex = getComputedStyle(themeRoot).getPropertyValue("--color-accent").trim();
-    const accentRgb = hexToRgb(accentHex);
-    currentAccent = accentRgb;
-    currentTheme = theme;
+  function animate() {
+    const speed = 0.1;
+    currentX += (targetX - currentX) * speed;
+    currentY += (targetY - currentY) * speed;
 
+    updateAccentFromTheme();
+
+    spotlight.style.background = `
+      radial-gradient(
+        750px at ${currentX}px ${currentY}px,
+        rgba(${currentAccent}, 0.25),
+        transparent 80%
+      )
+    `;
+
+    const dx = targetX - currentX;
+    const dy = targetY - currentY;
+    if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      rafId = null;
+    }
   }
 }
-
-function animateSpotlight() {
-  const speed = 0.1;
-  currentX += (targetX - currentX) * speed;
-  currentY += (targetY - currentY) * speed;
-
-  updateAccentFromTheme();
-
-  spotlight.style.background = `
-    radial-gradient(
-      750px at ${currentX}px ${currentY}px,
-      rgba(${currentAccent}, 0.25),
-      transparent 80%
-    )
-  `;
-
-  // Optional debug:
-  // console.log(`[animation] Applied with ${currentAccent}`);
-
-  requestAnimationFrame(animateSpotlight);
-}
-
-animateSpotlight();

@@ -33,7 +33,7 @@ function updateFavicon(theme) {
 function activateHalfLifeTheme() {
   // Only create and play the audio if it's not already playing
   if (!halflifeAudio || halflifeAudio.ended || halflifeAudio.paused) {
-    halflifeAudio = new Audio('/src/assets/audio/valve-theme.mp3');
+    halflifeAudio = new Audio('/audio/valve-theme.mp3');
     halflifeAudio.volume = 0.2; // Reduce volume (0.0 to 1.0)
     halflifeAudio.play();
   }
